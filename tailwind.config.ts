@@ -110,6 +110,10 @@ const config = {
         "pulse-slow": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.8" },
+        },
+        "carousel": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" }
         }
       },
       animation: {
@@ -117,11 +121,44 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
+        "carousel": "carousel 40s linear infinite",
       },
       backgroundImage: {
         'gradient-perplexity': 'linear-gradient(109.6deg, rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1%)',
         'gradient-hero': 'linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%)',
-      }
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '65ch',
+            color: 'var(--tw-prose-body)',
+            lineHeight: '1.75',
+            a: {
+              color: 'var(--tw-prose-links)',
+              textDecoration: 'underline',
+              fontWeight: '500',
+            },
+            h1: {
+              letterSpacing: '-0.025em',
+            },
+            h2: {
+              letterSpacing: '-0.025em',
+            },
+            h3: {
+              letterSpacing: '-0.025em',
+            },
+            'h1, h2, h3, h4': {
+              fontWeight: '700',
+              marginTop: '1.5em',
+              marginBottom: '0.75em',
+            },
+            p: {
+              marginTop: '1.25em',
+              marginBottom: '1.25em',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
