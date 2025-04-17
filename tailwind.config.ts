@@ -20,6 +20,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["SF Pro Display", "Inter", "Noto Sans SC", ...fontFamily.sans],
+        display: ["Clash Display", "SF Pro Display", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -55,10 +60,32 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         brand: {
-          500: "#0077FF",
-          600: "#0066DD",
+          50: "#eef7ff",
+          100: "#d9edff", 
+          200: "#bce0ff",
+          300: "#8dcbff",
+          400: "#57aeff",
+          500: "#2e8cff",
+          600: "#1870ff",
+          700: "#0057e5",
+          800: "#0547bb",
+          900: "#0a3c93",
+          950: "#072659",
         },
-        wechat: "#07C160"
+        wechat: "#07C160",
+        perplexity: {
+          50: "#f0f5ff",
+          100: "#e0eafc",
+          200: "#c9d8f8",
+          300: "#a8c0f2",
+          400: "#83a1e9",
+          500: "#6682dd",
+          600: "#4f64ce",
+          700: "#4350b8",
+          800: "#394595",
+          900: "#333c76",
+          950: "#21244b",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,14 +101,25 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 6s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
       },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
+      backgroundImage: {
+        'gradient-perplexity': 'linear-gradient(109.6deg, rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1%)',
+        'gradient-hero': 'linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%)',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

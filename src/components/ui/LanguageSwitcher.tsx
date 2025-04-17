@@ -12,11 +12,11 @@ export function LanguageSwitcher() {
       variant="ghost" 
       size="sm" 
       onClick={toggleLanguage} 
-      className="flex items-center gap-1"
+      className="rounded-full hover:bg-gray-100 group flex items-center gap-1"
       aria-label={t('language.switch')}
     >
-      <Globe className="h-4 w-4" />
-      <span>{language === 'en' ? '中文' : 'EN'}</span>
+      <Globe className="h-4 w-4 text-gray-600 group-hover:text-brand-500" />
+      <span className="font-medium">{language === 'en' ? '中文' : 'EN'}</span>
     </Button>
   );
 }
