@@ -7,6 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, ArrowRight, Zap, CheckCircle, Terminal, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Toggle } from "@/components/ui/toggle";
 
 export default function Index() {
   const { t } = useLanguage();
@@ -78,11 +79,11 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dot-pattern">
+    <div className="min-h-screen bg-gradient-perplexity dot-pattern">
       <Navbar />
 
       {/* Hero Section with reduced width */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+      <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           {/* Left Column (Reduced width) */}
           <div className="w-full lg:w-2/5 space-y-6 text-center lg:text-left">
@@ -94,20 +95,11 @@ export default function Index() {
             <p className="text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0">
               让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等
             </p>
-            
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start pt-4">
-              <Link to="/dashboard">
-                <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group">
-                  <span>立即开始使用</span>
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
           </div>
           
           {/* Right Column (Highlighted) */}
           <div className="mt-16 lg:mt-0 w-full lg:w-3/5 lg:pl-16 flex justify-center">
-            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 border border-gray-100 premium-card-shadow">
+            <div className="w-full max-w-2xl glass-morphism rounded-2xl p-6 premium-card-shadow">
               <h2 className="font-display text-2xl mb-6 text-center text-gray-900">快速体验</h2>
               <p className="text-center text-gray-600 mb-6">试试我们的AI绕过技术</p>
               
@@ -157,15 +149,15 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Pricing Section - 直接显示在首页 */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-8">
             选择<span className="text-brand-500">适合您</span>的方案
           </h2>
           
           <div className="flex justify-center mb-10">
-            <div className="bg-gray-100 p-1 rounded-full inline-flex">
+            <div className="glass-morphism p-1 rounded-full inline-flex">
               <button
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedPricingCycle === "monthly" 
@@ -193,13 +185,13 @@ export default function Index() {
             {pricingPlans.map((plan) => (
               <div 
                 key={plan.name}
-                className={`bg-white rounded-xl premium-border ${
-                  plan.popular ? 'glow-effect ring-2 ring-brand-500/20' : ''
-                } shadow-sm p-8 relative transition-all hover:translate-y-[-4px] hover:shadow-lg`}
+                className={`glass-morphism rounded-xl ${
+                  plan.popular ? 'glow-effect ring-2 ring-brand-500/30' : ''
+                } shadow-sm p-8 relative transition-all ai-card-hover`}
               >
                 {plan.popular && (
                   <div className="absolute top-0 translate-y-(-50%) left-0 right-0">
-                    <span className="bg-brand-500 text-white text-xs font-medium px-3 py-1 rounded-full mx-auto block w-fit -mt-3">
+                    <span className="bg-gradient-premium text-white text-xs font-medium px-3 py-1 rounded-full mx-auto block w-fit -mt-3">
                       最受欢迎
                     </span>
                   </div>
@@ -228,7 +220,7 @@ export default function Index() {
                 <div className="mt-8">
                   <Button 
                     className={`w-full ${
-                      plan.popular ? 'bg-brand-500 hover:bg-brand-600' : 'bg-gray-900 hover:bg-gray-800'
+                      plan.popular ? 'bg-gradient-premium hover:opacity-90' : 'bg-gray-900 hover:bg-gray-800'
                     } rounded-full`}
                   >
                     {plan.cta}
@@ -241,7 +233,7 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50 dot-pattern">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-perplexity dot-pattern">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
             为什么选择 <span className="text-brand-500">智绕 AI</span>
@@ -251,7 +243,7 @@ export default function Index() {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="bg-white p-6 rounded-2xl premium-border premium-card-shadow hover:shadow-lg transition-all"
+                className="glass-morphism p-6 rounded-2xl premium-border premium-card-shadow ai-card-hover"
               >
                 <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center mb-4">
                   {feature.icon}
@@ -265,7 +257,7 @@ export default function Index() {
       </section>
 
       {/* Advanced Features */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -302,7 +294,7 @@ export default function Index() {
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 premium-card-shadow">
+            <div className="glass-morphism p-8 rounded-xl premium-card-shadow">
               <div className="rounded-lg bg-gray-800 p-4 mb-5">
                 <div className="flex items-center mb-3">
                   <div className="flex space-x-1.5">
@@ -345,7 +337,7 @@ print(result["bypassed_text"])`}</code>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-perplexity dot-pattern">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
             用户评价
@@ -355,7 +347,7 @@ print(result["bypassed_text"])`}</code>
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="bg-white p-6 rounded-2xl premium-border premium-card-shadow transition-all hover:shadow-lg"
+                className="glass-morphism p-6 rounded-2xl premium-border premium-card-shadow ai-card-hover"
               >
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 rounded-full bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-500 font-medium">
@@ -386,8 +378,8 @@ print(result["bypassed_text"])`}</code>
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto pricing-highlight rounded-2xl p-8 md:p-12 shadow-xl text-white text-center">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
+        <div className="max-w-4xl mx-auto bg-gradient-premium rounded-2xl p-8 md:p-12 shadow-xl text-white text-center">
           <div className="absolute -top-3 right-10 transform rotate-12 opacity-50">
             <Sparkles className="w-6 h-6 text-yellow-300" />
           </div>

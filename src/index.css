@@ -10,7 +10,7 @@
 
 @layer base {
   :root {
-    --background: 220 33% 98%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -19,7 +19,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221 83% 53%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217 20% 96%;
@@ -28,7 +28,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 221 90% 96%;
+    --accent: 262 90% 96%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -60,7 +60,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 221 83% 53%;
+    --primary: 262 83% 58%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -69,7 +69,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 221 70% 20%;
+    --accent: 262 70% 20%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -105,11 +105,11 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #0077ff 0%, #00d2ff 100%);
+  background: linear-gradient(135deg, #9b87f5 0%, #b668ff 100%);
 }
 
 .perplexity-gradient {
-  background: linear-gradient(109.6deg, rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1%);
+  background: linear-gradient(109.6deg, rgba(236, 236, 248, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
 }
 
 .blur-overlay {
@@ -119,27 +119,43 @@
 
 /* Custom dot pattern background */
 .dot-pattern {
-  background-image: radial-gradient(#2e8cff20 1px, transparent 1px);
+  background-image: radial-gradient(#9b87f520 1px, transparent 1px);
   background-size: 25px 25px;
 }
 
 /* Premium AI gradient backgrounds */
 .anthropic-gradient {
-  background: linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%);
+  background: linear-gradient(90deg, #f5f5ff 0%, #ffffff 100%);
 }
 
 .premium-card-shadow {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(155, 135, 245, 0.12);
 }
 
 .premium-border {
-  border: 1px solid rgba(46, 140, 255, 0.1);
+  border: 1px solid rgba(155, 135, 245, 0.15);
 }
 
 .pricing-highlight {
-  background: linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+  background: linear-gradient(90deg, hsla(256, 85%, 75%, 1) 0%, hsla(262, 100%, 60%, 1) 100%);
 }
 
 .glow-effect {
-  box-shadow: 0 0 20px rgba(46, 140, 255, 0.2);
+  box-shadow: 0 0 20px rgba(155, 135, 245, 0.25);
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ai-card-hover {
+  transition: all 0.3s ease;
+}
+
+.ai-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(155, 135, 245, 0.2);
 }
