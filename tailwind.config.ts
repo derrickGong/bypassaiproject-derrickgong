@@ -21,9 +21,11 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["SF Pro Display", "Inter", "Noto Sans SC", ...fontFamily.sans],
+        sans: ["Inter", "Noto Sans SC", ...fontFamily.sans],
         display: ["Clash Display", "SF Pro Display", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
+        cn: ["Noto Sans SC", "sans-serif"],
+        en: ["Inter", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
