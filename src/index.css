@@ -19,7 +19,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221 90% 58%;
+    --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217 20% 96%;
@@ -60,7 +60,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 221 90% 58%;
+    --primary: 221 83% 53%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -121,4 +121,25 @@
 .dot-pattern {
   background-image: radial-gradient(#2e8cff20 1px, transparent 1px);
   background-size: 25px 25px;
+}
+
+/* Premium AI gradient backgrounds */
+.anthropic-gradient {
+  background: linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.premium-card-shadow {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.premium-border {
+  border: 1px solid rgba(46, 140, 255, 0.1);
+}
+
+.pricing-highlight {
+  background: linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(46, 140, 255, 0.2);
 }

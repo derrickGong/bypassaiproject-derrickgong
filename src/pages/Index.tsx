@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Check, ArrowRight, Zap, CheckCircle, Terminal } from "lucide-react";
+import { Check, ArrowRight, Zap, CheckCircle, Terminal, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 
 export default function Index() {
   const { t } = useLanguage();
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
+  const [selectedPricingCycle, setSelectedPricingCycle] = useState("monthly");
   
   const handleBypass = () => {
-    // This would be connected to a real backend in production
     // Mock response for demonstration
     setOutputText(
       inputText
@@ -23,8 +24,61 @@ export default function Index() {
     );
   };
 
+  const pricingPlans = [
+    {
+      name: "基础版",
+      price: selectedPricingCycle === "monthly" ? "￥19.9" : "￥159.9",
+      period: selectedPricingCycle === "monthly" ? "月" : "年",
+      description: "适合个人偶尔使用",
+      features: [
+        "每月10,000字处理量",
+        "基础绕过模式",
+        "最高85%绕过成功率",
+        "5个并发请求",
+        "邮件支持",
+      ],
+      cta: "开始使用",
+      popular: false,
+    },
+    {
+      name: "专业版",
+      price: selectedPricingCycle === "monthly" ? "￥49.9" : "￥399.9",
+      period: selectedPricingCycle === "monthly" ? "月" : "年",
+      description: "适合频繁使用的个人用户",
+      features: [
+        "每月50,000字处理量",
+        "高级绕过模式",
+        "最高95%绕过成功率",
+        "20个并发请求",
+        "优先邮件支持",
+        "API访问",
+        "批量处理"
+      ],
+      cta: "选择专业版",
+      popular: true,
+    },
+    {
+      name: "团队版",
+      price: selectedPricingCycle === "monthly" ? "￥149.9" : "￥1199.9",
+      period: selectedPricingCycle === "monthly" ? "月" : "年",
+      description: "适合小型团队使用",
+      features: [
+        "每月200,000字处理量",
+        "顶级绕过模式",
+        "最高99%绕过成功率",
+        "无限并发请求",
+        "专属客服支持",
+        "高级API功能",
+        "自定义绕过策略",
+        "团队成员管理",
+      ],
+      cta: "联系销售",
+      popular: false,
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-perplexity-50 to-white dot-pattern">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dot-pattern">
       <Navbar />
 
       {/* Hero Section with reduced width */}
@@ -48,17 +102,12 @@ export default function Index() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link to="/features">
-                <Button variant="outline" size="lg" className="rounded-full font-medium px-8">
-                  了解更多
-                </Button>
-              </Link>
             </div>
           </div>
           
           {/* Right Column (Highlighted) */}
           <div className="mt-16 lg:mt-0 w-full lg:w-3/5 lg:pl-16 flex justify-center">
-            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 border border-gray-100 animate-float">
+            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 border border-gray-100 premium-card-shadow">
               <h2 className="font-display text-2xl mb-6 text-center text-gray-900">快速体验</h2>
               <p className="text-center text-gray-600 mb-6">试试我们的AI绕过技术</p>
               
@@ -108,8 +157,91 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-8">
+            选择<span className="text-brand-500">适合您</span>的方案
+          </h2>
+          
+          <div className="flex justify-center mb-10">
+            <div className="bg-gray-100 p-1 rounded-full inline-flex">
+              <button
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                  selectedPricingCycle === "monthly" 
+                  ? "bg-white shadow-md text-gray-900" 
+                  : "text-gray-600 hover:text-gray-900"
+                }`}
+                onClick={() => setSelectedPricingCycle("monthly")}
+              >
+                月付方案
+              </button>
+              <button
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                  selectedPricingCycle === "yearly" 
+                  ? "bg-white shadow-md text-gray-900" 
+                  : "text-gray-600 hover:text-gray-900"
+                }`}
+                onClick={() => setSelectedPricingCycle("yearly")}
+              >
+                年付方案 <span className="text-brand-500 font-semibold">省20%</span>
+              </button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan) => (
+              <div 
+                key={plan.name}
+                className={`bg-white rounded-xl premium-border ${
+                  plan.popular ? 'glow-effect ring-2 ring-brand-500/20' : ''
+                } shadow-sm p-8 relative transition-all hover:translate-y-[-4px] hover:shadow-lg`}
+              >
+                {plan.popular && (
+                  <div className="absolute top-0 translate-y-(-50%) left-0 right-0">
+                    <span className="bg-brand-500 text-white text-xs font-medium px-3 py-1 rounded-full mx-auto block w-fit -mt-3">
+                      最受欢迎
+                    </span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-gray-600 ml-2">/{plan.period}</span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-500">{plan.description}</p>
+                </div>
+                
+                <div className="border-t border-gray-100 my-6 pt-6">
+                  <ul className="space-y-4">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-brand-500 mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="mt-8">
+                  <Button 
+                    className={`w-full ${
+                      plan.popular ? 'bg-brand-500 hover:bg-brand-600' : 'bg-gray-900 hover:bg-gray-800'
+                    } rounded-full`}
+                  >
+                    {plan.cta}
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50 dot-pattern">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
             为什么选择 <span className="text-brand-500">智绕 AI</span>
@@ -119,7 +251,7 @@ export default function Index() {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white p-6 rounded-2xl premium-border premium-card-shadow hover:shadow-lg transition-all"
               >
                 <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center mb-4">
                   {feature.icon}
@@ -133,7 +265,7 @@ export default function Index() {
       </section>
 
       {/* Advanced Features */}
-      <section className="py-16 px-4 bg-perplexity-50 dot-pattern">
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -163,14 +295,14 @@ export default function Index() {
               
               <div className="mt-8">
                 <Link to="/features">
-                  <Button className="bg-brand-500 hover:bg-brand-600 rounded-full">
-                    {t('home.tech.viewAll')} <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button className="bg-brand-500 hover:bg-brand-600 rounded-full group">
+                    {t('home.tech.viewAll')} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
+            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 premium-card-shadow">
               <div className="rounded-lg bg-gray-800 p-4 mb-5">
                 <div className="flex items-center mb-3">
                   <div className="flex space-x-1.5">
@@ -213,7 +345,7 @@ print(result["bypassed_text"])`}</code>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
             用户评价
@@ -223,10 +355,10 @@ print(result["bypassed_text"])`}</code>
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="bg-perplexity-50 p-6 rounded-2xl border border-gray-100 shadow-sm"
+                className="bg-white p-6 rounded-2xl premium-border premium-card-shadow transition-all hover:shadow-lg"
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-700 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-500 font-medium">
                     {testimonial.initials}
                   </div>
                   <div className="ml-3">
@@ -254,8 +386,11 @@ print(result["bypassed_text"])`}</code>
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-perplexity-50">
-        <div className="max-w-4xl mx-auto bg-gradient-hero rounded-2xl p-8 md:p-12 shadow-xl text-white text-center">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto pricing-highlight rounded-2xl p-8 md:p-12 shadow-xl text-white text-center">
+          <div className="absolute -top-3 right-10 transform rotate-12 opacity-50">
+            <Sparkles className="w-6 h-6 text-yellow-300" />
+          </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">准备好开始了吗？</h2>
           <p className="text-white/90 text-lg mb-8">立即注册并体验我们的AI绕过检测技术</p>
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center">
@@ -264,9 +399,9 @@ print(result["bypassed_text"])`}</code>
                 免费注册
               </Button>
             </Link>
-            <Link to="/pricing">
+            <Link to="/dashboard">
               <Button size="lg" variant="outline" className="rounded-full font-medium px-8 border-white text-white hover:bg-white/10">
-                查看价格方案
+                立即开始使用
               </Button>
             </Link>
           </div>
