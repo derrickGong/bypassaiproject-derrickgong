@@ -35,16 +35,17 @@ export default function Index() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
           {/* Left Column (Reduced width) */}
           <div className="w-full lg:w-2/5 space-y-8 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-gray-900 leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-hero">智能绕过</span>
-              <br />AI检测
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-normal leading-none text-gray-900">
+              <span className="bg-clip-text text-transparent bg-gradient-hero tracking-tight">智能绕过</span>
+              <br />
+              <span className="tracking-normal leading-tight">AI检测</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed tracking-wide">
               让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等
             </p>
             
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start pt-4">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start pt-6">
               <Link to="/dashboard">
                 <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group text-white shadow-lg hover:shadow-xl transition-all">
                   <span>立即开始使用</span>
