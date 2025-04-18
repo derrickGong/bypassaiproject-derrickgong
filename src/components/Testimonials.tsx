@@ -15,30 +15,30 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "王浩然",
-    initials: "王",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+    name: "张明",
+    initials: "张",
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
     role: "博士研究生",
-    institution: "清华大学",
-    text: "智绕AI帮我节省了大量时间。在准备学术论文时，我可以通过AI快速生成初稿，然后使用智绕AI处理，确保不会被检测出AI痕迹。教授们对我的写作风格一致性非常认可，这在很大程度上归功于这款工具。",
+    institution: "哈佛大学",
+    text: "智绕AI极大地帮助了我的学术写作。作为一名国际学生，在准备论文和研究报告时，我可以先用母语思考，然后借助AI生成英文初稿。通过智绕AI的处理，确保内容既专业又原创，完全不用担心被检测出AI痕迹。",
     rating: 5
   },
   {
-    name: "李明芳",
+    name: "李雪梅",
     initials: "李",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
-    role: "副教授",
-    institution: "复旦大学",
-    text: "作为教育工作者，我发现智绕AI是一个双刃剑。在了解AI检测系统工作原理后，我可以更好地指导学生如何正确使用AI辅助工具，而不是简单地禁止使用。它帮助我们适应人工智能时代的教育变革。",
-    rating: 4
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+    role: "硕士生",
+    institution: "斯坦福大学",
+    text: "作为理工科学生，我经常需要撰写大量的实验报告和研究论文。智绕AI不仅帮我节省了大量时间，还确保了我的内容能够顺利通过学校严格的原创性检测。这个工具真的改变了我的学习方式。",
+    rating: 5
   },
   {
-    name: "张文博",
-    initials: "张",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
-    role: "内容创作总监",
-    institution: "字节跳动",
-    text: "我们团队每天都要创作大量营销内容，智绕AI不仅帮我们有效地规避了AI检测，还提高了整体工作效率。系统稳定可靠，API接口设计非常友好，让我们能轻松集成到现有工作流程中。强烈推荐！",
+    name: "王浩",
+    initials: "王",
+    avatar: "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+    role: "本科生",
+    institution: "清华大学",
+    text: "在准备申请材料和学术论文时，智绕AI给了我很大帮助。它不仅能保持文章的专业性和原创性，还能确保文章顺利通过各种检测系统。对于我们这些需要用英文写作的学生来说，这真是一个非常实用的工具。",
     rating: 5
   }
 ];

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
@@ -15,19 +14,9 @@ interface University {
 const universities: University[] = [
   { name: "清华大学", logo: "/universities/tsinghua.png", country: "中国" },
   { name: "北京大学", logo: "/universities/peking.png", country: "中国" },
-  { name: "浙江大学", logo: "/universities/zju.png", country: "中国" },
-  { name: "复旦大学", logo: "/universities/fudan.png", country: "中国" },
-  { name: "南京大学", logo: "/universities/nju.png", country: "中国" },
-  { name: "中国人民大学", logo: "/universities/ruc.png", country: "中国" },
-  { name: "武汉大学", logo: "/universities/whu.png", country: "中国" },
-  { name: "上海交通大学", logo: "/universities/sjtu.png", country: "中国" },
   { name: "哈佛大学", logo: "/universities/harvard.png", country: "美国" },
   { name: "斯坦福大学", logo: "/universities/stanford.png", country: "美国" },
   { name: "麻省理工学院", logo: "/universities/mit.png", country: "美国" },
-  { name: "牛津大学", logo: "/universities/oxford.png", country: "英国" },
-  { name: "剑桥大学", logo: "/universities/cambridge.png", country: "英国" },
-  { name: "苏黎世联邦理工学院", logo: "/universities/eth.png", country: "瑞士" },
-  { name: "帝国理工学院", logo: "/universities/imperial.png", country: "英国" },
   { name: "加州理工学院", logo: "/universities/caltech.png", country: "美国" },
 ];
 
