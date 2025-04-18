@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,27 +16,27 @@ const testimonials: Testimonial[] = [
   {
     name: "陈思宇",
     initials: "陈",
-    avatar: "/lovable-uploads/student-1.png",
+    avatar: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
     role: "博士研究生",
-    institution: "清华大学",
+    institution: "Harvard University",
     text: "智绕AI极大地帮助了我的学术写作。作为一名国际学生，在准备论文和研究报告时，我可以先用母语思考，然后借助AI生成英文初稿。通过智绕AI的处理，确保内容既专业又原创，完全不用担心被检测出AI痕迹。",
     rating: 5
   },
   {
     name: "李雨婷",
     initials: "李",
-    avatar: "/lovable-uploads/student-2.png",
+    avatar: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
     role: "硕士生",
-    institution: "北京大学",
+    institution: "Stanford University",
     text: "作为理工科学生，我经常需要撰写大量的实验报告和研究论文。智绕AI不仅帮我节省了大量时间，还确保了我的内容能够顺利通过学校严格的原创性检测。这个工具真的改变了我的学习方式。",
     rating: 5
   },
   {
     name: "王明哲",
     initials: "王",
-    avatar: "/lovable-uploads/student-3.png",
+    avatar: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
     role: "本科生",
-    institution: "浙江大学",
+    institution: "MIT",
     text: "在准备申请材料和学术论文时，智绕AI给了我很大帮助。它不仅能保持文章的专业性和原创性，还能确保文章顺利通过各种检测系统。对于我们这些需要用英文写作的学生来说，这真是一个非常实用的工具。",
     rating: 5
   }
@@ -87,9 +86,6 @@ export function Testimonials() {
                 
                 <p className="text-gray-700 leading-relaxed">"{testimonial.text}"</p>
                 
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <span className="text-xs text-gray-500">验证用户</span>
-                </div>
               </CardContent>
             </Card>
           ))}
