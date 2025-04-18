@@ -1,4 +1,3 @@
-
 const translations = {
   // Common
   'app.name': '智绕 AI',
@@ -30,7 +29,7 @@ const translations = {
 
   // Homepage
   'home.hero.title': '智能绕过AI检测',
-  'home.hero.subtitle': '让您的内容顺利通过各类AI检测系统，包括 Turnitin、GPTZero、ZeroGPT、Originality AI 等',
+  'home.hero.subtitle': '顺利通过各类AI检测系统的扫描，包括Turnitin、GPTZero、ZeroGPT、Originality AI等',
   'home.startNow': '立即开始使用',
   'home.learnMore': '了解更多',
   'home.demo.title': '快速体验',

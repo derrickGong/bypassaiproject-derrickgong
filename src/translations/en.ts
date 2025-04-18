@@ -1,4 +1,3 @@
-
 const translations = {
   // Common
   'app.name': 'Bypass AI',
@@ -30,7 +29,7 @@ const translations = {
 
   // Homepage
   'home.hero.title': 'Bypass AI Detection',
-  'home.hero.subtitle': 'Help your content pass through various AI detection systems, including Turnitin, GPTZero, ZeroGPT, Originality AI, and more',
+  'home.hero.subtitle': 'Help your content pass through various AI detection system scans, including Turnitin, GPTZero, ZeroGPT, Originality AI, and more',
   'home.startNow': 'Start Now',
   'home.learnMore': 'Learn More',
   'home.demo.title': 'Quick Demo',
