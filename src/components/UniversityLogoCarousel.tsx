@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 interface University {
   name: string;
@@ -22,107 +23,89 @@ const universities: University[] = [
 ];
 
 export function UniversityLogoCarousel() {
-  const [offset, setOffset] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
-  
-  useEffect(() => {
-    // 预加载所有图片
-    const preloadImages = async () => {
-      const loadStatus: Record<string, boolean> = {};
-      
-      for (const university of universities) {
-        try {
-          // 创建图片元素并加载
-          const img = new Image();
-          img.src = university.logo;
-          await new Promise((resolve, reject) => {
-            img.onload = () => {
-              loadStatus[university.name] = true;
-              resolve(true);
-            };
-            img.onerror = () => {
-              loadStatus[university.name] = false;
-              reject(new Error(`Failed to load ${university.logo}`));
-            };
-          });
-        } catch (error) {
-          console.error(`Error loading ${university.logo}:`, error);
-        }
-      }
-      
-      setImagesLoaded(loadStatus);
-    };
-    
-    preloadImages();
-  }, []);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOffset((prevOffset) => (prevOffset + 1) % (universities.length * 2));
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, []);
+  const [logoStatus, setLogoStatus] = useState<Record<string, boolean>>({});
 
-  console.log('Images loaded status:', imagesLoaded);
+  // Track image load status
+  const handleImageLoad = (universityName: string) => {
+    setLogoStatus(prev => ({
+      ...prev,
+      [universityName]: true
+    }));
+  };
+
+  const handleImageError = (universityName: string, logoUrl: string) => {
+    console.error(`Failed to load logo for ${universityName}: ${logoUrl}`);
+    setLogoStatus(prev => ({
+      ...prev,
+      [universityName]: false
+    }));
+  };
+
+  // Log status for debugging
+  useEffect(() => {
+    console.log('Logo status:', logoStatus);
+  }, [logoStatus]);
 
   return (
-    <div className="w-full py-16 overflow-hidden bg-white">
+    <div className="w-full py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-display font-bold text-center mb-12 text-gray-900 tracking-tight leading-snug">
           受到各大高校信赖
         </h2>
         
-        <div className="relative w-full">
-          <div 
-            className="flex items-center gap-16 transition-transform duration-1000 ease-in-out"
-            style={{ 
-              transform: `translateX(-${offset * 130}px)`,
-              width: `${universities.length * 260}px`
-            }}
-          >
-            {[...universities, ...universities].map((university, index) => (
-              <TooltipProvider key={index}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Card
-                      className={cn(
-                        "flex-shrink-0 w-40 h-40 flex items-center justify-center p-5",
-                        "border border-gray-100 shadow-sm hover:shadow-md transition-shadow",
-                        "bg-white backdrop-blur-sm"
-                      )}
-                    >
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="h-16 w-full flex items-center justify-center">
-                          <img 
-                            src={university.logo} 
-                            alt={`${university.name} logo`}
-                            className="max-h-16 w-auto object-contain"
-                            onError={(e) => {
-                              console.error(`Error loading ${university.logo}`);
-                              // 在加载失败时显示错误信息
-                              (e.target as HTMLImageElement).src = "/placeholder.svg";
-                              (e.target as HTMLImageElement).style.opacity = "0.7";
-                            }}
-                          />
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {universities.map((university, index) => (
+              <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4 flex justify-center">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Card
+                        className={cn(
+                          "w-40 h-40 flex items-center justify-center p-5",
+                          "border border-gray-100 shadow-sm hover:shadow-md transition-shadow",
+                          "bg-white"
+                        )}
+                      >
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="h-16 w-full flex items-center justify-center relative">
+                            <img 
+                              src={university.logo} 
+                              alt={`${university.name} logo`}
+                              className="max-h-16 max-w-full object-contain"
+                              style={{ 
+                                backgroundColor: "transparent",
+                                visibility: "visible"
+                              }}
+                              onLoad={() => handleImageLoad(university.name)}
+                              onError={(e) => {
+                                handleImageError(university.name, university.logo);
+                                (e.target as HTMLImageElement).src = "/placeholder.svg";
+                                (e.target as HTMLImageElement).style.opacity = "0.7";
+                              }}
+                            />
+                          </div>
+                          <span className="text-sm text-center font-medium text-gray-800 line-clamp-2">
+                            {university.name}
+                          </span>
                         </div>
-                        <span className="text-sm text-center font-medium text-gray-800 line-clamp-2">
-                          {university.name}
-                        </span>
-                      </div>
-                    </Card>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{university.name} ({university.country})</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+                      </Card>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{university.name} ({university.country})</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </CarouselItem>
             ))}
-          </div>
-          
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-        </div>
+          </CarouselContent>
+        </Carousel>
       </div>
     </div>
   );
