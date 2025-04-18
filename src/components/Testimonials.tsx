@@ -15,27 +15,27 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "张明",
-    initials: "张",
-    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+    name: "李明阳",
+    initials: "李",
+    avatar: "/lovable-uploads/ff709c87-680e-4a2c-8b6e-ab1b449d3977.png",
     role: "博士研究生",
     institution: "哈佛大学",
     text: "智绕AI极大地帮助了我的学术写作。作为一名国际学生，在准备论文和研究报告时，我可以先用母语思考，然后借助AI生成英文初稿。通过智绕AI的处理，确保内容既专业又原创，完全不用担心被检测出AI痕迹。",
     rating: 5
   },
   {
-    name: "李雪梅",
-    initials: "李",
-    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+    name: "王雪梅",
+    initials: "王",
+    avatar: "/lovable-uploads/ff709c87-680e-4a2c-8b6e-ab1b449d3977.png",
     role: "硕士生",
     institution: "斯坦福大学",
     text: "作为理工科学生，我经常需要撰写大量的实验报告和研究论文。智绕AI不仅帮我节省了大量时间，还确保了我的内容能够顺利通过学校严格的原创性检测。这个工具真的改变了我的学习方式。",
     rating: 5
   },
   {
-    name: "王浩",
-    initials: "王",
-    avatar: "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+    name: "张浩然",
+    initials: "张",
+    avatar: "/lovable-uploads/ff709c87-680e-4a2c-8b6e-ab1b449d3977.png",
     role: "本科生",
     institution: "清华大学",
     text: "在准备申请材料和学术论文时，智绕AI给了我很大帮助。它不仅能保持文章的专业性和原创性，还能确保文章顺利通过各种检测系统。对于我们这些需要用英文写作的学生来说，这真是一个非常实用的工具。",
@@ -51,14 +51,14 @@ export function Testimonials() {
           用户评价
         </h2>
         <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          来自各行各业的用户分享他们使用智绕AI的真实体验
+          来自各大高校的学生分享他们使用智绕AI的真实体验
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index} 
-              className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group"
+              className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
@@ -87,9 +87,8 @@ export function Testimonials() {
                 
                 <p className="text-gray-700 leading-relaxed">"{testimonial.text}"</p>
                 
-                <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+                <div className="mt-4 pt-4 border-t border-gray-100">
                   <span className="text-xs text-gray-500">验证用户</span>
-                  <div className="text-brand-500 text-sm font-medium group-hover:underline cursor-pointer">查看完整评价</div>
                 </div>
               </CardContent>
             </Card>
