@@ -13,36 +13,39 @@ interface University {
 }
 
 const universities: University[] = [
-  { name: "Harvard University", logo: "/universities/harvard.png", country: "USA" },
-  { name: "Stanford University", logo: "/universities/stanford.png", country: "USA" },
-  { name: "Massachusetts Institute of Technology", logo: "/universities/mit.png", country: "USA" },
-  { name: "University of Oxford", logo: "/universities/oxford.png", country: "UK" },
-  { name: "University of Cambridge", logo: "/universities/cambridge.png", country: "UK" },
-  { name: "ETH Zurich", logo: "/universities/eth.png", country: "Switzerland" },
-  { name: "Imperial College London", logo: "/universities/imperial.png", country: "UK" },
-  { name: "California Institute of Technology", logo: "/universities/caltech.png", country: "USA" },
+  { name: "清华大学", logo: "/universities/tsinghua.png", country: "中国" },
+  { name: "北京大学", logo: "/universities/peking.png", country: "中国" },
+  { name: "浙江大学", logo: "/universities/zju.png", country: "中国" },
+  { name: "复旦大学", logo: "/universities/fudan.png", country: "中国" },
+  { name: "南京大学", logo: "/universities/nju.png", country: "中国" },
+  { name: "中国人民大学", logo: "/universities/ruc.png", country: "中国" },
+  { name: "武汉大学", logo: "/universities/whu.png", country: "中国" },
+  { name: "上海交通大学", logo: "/universities/sjtu.png", country: "中国" },
+  { name: "哈佛大学", logo: "/universities/harvard.png", country: "美国" },
+  { name: "斯坦福大学", logo: "/universities/stanford.png", country: "美国" },
+  { name: "麻省理工学院", logo: "/universities/mit.png", country: "美国" },
+  { name: "牛津大学", logo: "/universities/oxford.png", country: "英国" },
+  { name: "剑桥大学", logo: "/universities/cambridge.png", country: "英国" },
+  { name: "苏黎世联邦理工学院", logo: "/universities/eth.png", country: "瑞士" },
+  { name: "帝国理工学院", logo: "/universities/imperial.png", country: "英国" },
+  { name: "加州理工学院", logo: "/universities/caltech.png", country: "美国" },
 ];
 
 export function UniversityLogoCarousel() {
   const [logoStatus, setLogoStatus] = useState<Record<string, boolean>>({});
   const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
+    Autoplay({ delay: 2000, stopOnInteraction: true })
   );
 
-  const handleImageLoad = (universityName: string) => {
-    setLogoStatus(prev => ({
-      ...prev,
-      [universityName]: true
-    }));
-  };
-
-  const handleImageError = (universityName: string, logoUrl: string) => {
-    console.error(`Failed to load logo for ${universityName}: ${logoUrl}`);
-    setLogoStatus(prev => ({
-      ...prev,
-      [universityName]: false
-    }));
-  };
+  useEffect(() => {
+    // 预加载所有图片
+    universities.forEach(university => {
+      const img = new Image();
+      img.src = university.logo;
+      img.onload = () => setLogoStatus(prev => ({ ...prev, [university.name]: true }));
+      img.onerror = () => setLogoStatus(prev => ({ ...prev, [university.name]: false }));
+    });
+  }, []);
 
   return (
     <div className="w-full py-20 bg-gray-50">
@@ -61,14 +64,14 @@ export function UniversityLogoCarousel() {
         >
           <CarouselContent className="-ml-4">
             {universities.map((university, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/3 lg:basis-1/4">
+              <CarouselItem key={index} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Card
                         className={cn(
-                          "w-full aspect-square flex items-center justify-center p-8",
-                          "border border-gray-100 shadow-sm hover:shadow-md transition-shadow",
+                          "p-6 h-40 flex items-center justify-center",
+                          "border border-gray-100 shadow-sm hover:shadow-md transition-all",
                           "bg-white"
                         )}
                       >
@@ -77,19 +80,14 @@ export function UniversityLogoCarousel() {
                             <img 
                               src={university.logo} 
                               alt={`${university.name} logo`}
-                              className="max-h-20 w-auto object-contain"
-                              style={{
-                                opacity: logoStatus[university.name] ? 1 : 0.7,
-                                transition: "opacity 0.3s ease"
-                              }}
-                              onLoad={() => handleImageLoad(university.name)}
-                              onError={(e) => {
-                                handleImageError(university.name, university.logo);
-                                (e.target as HTMLImageElement).src = "/placeholder.svg";
-                              }}
+                              className={cn(
+                                "max-h-16 w-auto object-contain",
+                                "transition-opacity duration-300",
+                                logoStatus[university.name] ? "opacity-100" : "opacity-70"
+                              )}
                             />
                           </div>
-                          <span className="text-sm font-medium text-gray-800 text-center line-clamp-2">
+                          <span className="text-sm font-medium text-gray-800 text-center line-clamp-1">
                             {university.name}
                           </span>
                         </div>

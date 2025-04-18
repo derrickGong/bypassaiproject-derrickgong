@@ -31,20 +31,20 @@ export default function Index() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
           {/* Left Column (Reduced width) */}
-          <div className="w-full lg:w-2/5 space-y-8 text-center lg:text-left">
+          <div className="w-full lg:w-1/3 space-y-8 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight text-gray-900">
               <span className="bg-clip-text text-transparent bg-gradient-hero">智能绕过</span>
               <br />
               <span className="tracking-tight leading-tight">AI检测</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed tracking-wide max-w-xl mx-auto lg:mx-0">
+            <p className="text-lg text-gray-700 leading-relaxed max-w-xl mx-auto lg:mx-0">
               让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等
             </p>
             
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start pt-8">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start">
               <Link to="/dashboard">
                 <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group text-white shadow-lg hover:shadow-xl transition-all w-full sm:w-auto">
                   <span>立即开始使用</span>
@@ -59,20 +59,20 @@ export default function Index() {
             </div>
           </div>
           
-          {/* Right Column (Increased width) */}
-          <div className="mt-8 lg:mt-0 w-full lg:w-3/5 lg:pl-16">
-            <Card className="w-full max-w-2xl bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl border border-gray-100 animate-float">
-              <CardContent className="p-6">
+          {/* Right Column (Increased width with larger demo box) */}
+          <div className="w-full lg:w-2/3 lg:pl-16">
+            <Card className="w-full bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl border border-gray-100 animate-float">
+              <CardContent className="p-8">
                 <h2 className="font-display text-2xl mb-4 text-center text-gray-900">快速体验</h2>
-                <p className="text-center text-gray-600 mb-6">试试我们的AI绕过技术</p>
+                <p className="text-center text-gray-600 mb-8 text-lg">试试我们的AI绕过技术</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   <div className="relative">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       输入AI生成的文本
                     </label>
                     <textarea 
-                      className="w-full h-64 p-4 rounded-xl border border-gray-200 focus:ring-brand-500 focus:border-brand-500 text-gray-700 bg-white/70 shadow-inner"
+                      className="w-full h-80 p-6 rounded-xl border border-gray-200 focus:ring-brand-500 focus:border-brand-500 text-gray-700 bg-white/70 shadow-inner text-base"
                       placeholder="输入AI生成的文本"
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
@@ -87,7 +87,7 @@ export default function Index() {
                       <span className="text-sm text-gray-500">0% 检测概率</span>
                     </div>
                     <textarea 
-                      className="w-full h-64 p-4 rounded-xl border border-gray-200 bg-white/70 text-gray-700 shadow-inner"
+                      className="w-full h-80 p-6 rounded-xl border border-gray-200 bg-white/70 text-gray-700 shadow-inner text-base"
                       placeholder="处理后的文本" 
                       value={outputText}
                       readOnly
@@ -95,16 +95,16 @@ export default function Index() {
                   </div>
                 </div>
                 
-                <div className="mt-6 text-center">
+                <div className="mt-8 text-center">
                   <Button 
                     size="lg" 
-                    className="rounded-full px-8 font-medium bg-brand-500 hover:bg-brand-600 group text-white shadow-md hover:shadow-lg transition-all"
+                    className="rounded-full px-12 py-6 text-lg font-medium bg-brand-500 hover:bg-brand-600 group text-white shadow-md hover:shadow-lg transition-all"
                     onClick={handleBypass}
                     disabled={!inputText}
                   >
-                    <Zap className="mr-2 h-4 w-4" />
+                    <Zap className="mr-3 h-5 w-5" />
                     <span>绕过AI检测</span>
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </div>
               </CardContent>
@@ -309,11 +309,6 @@ print(result["bypassed_text"])`}</code>
             <Link to="/register">
               <Button size="lg" variant="secondary" className="rounded-full font-medium px-8 text-brand-600 bg-white hover:bg-gray-100">
                 免费注册
-              </Button>
-            </Link>
-            <Link to="/pricing">
-              <Button size="lg" variant="outline" className="rounded-full font-medium px-8 border-white text-white hover:bg-white/10">
-                查看价格方案
               </Button>
             </Link>
           </div>
