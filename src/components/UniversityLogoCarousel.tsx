@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 interface University {
   name: string;
@@ -24,8 +25,10 @@ const universities: University[] = [
 
 export function UniversityLogoCarousel() {
   const [logoStatus, setLogoStatus] = useState<Record<string, boolean>>({});
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
 
-  // Track image load status
   const handleImageLoad = (universityName: string) => {
     setLogoStatus(prev => ({
       ...prev,
@@ -41,15 +44,10 @@ export function UniversityLogoCarousel() {
     }));
   };
 
-  // Log status for debugging
-  useEffect(() => {
-    console.log('Logo status:', logoStatus);
-  }, [logoStatus]);
-
   return (
-    <div className="w-full py-16 bg-gray-50">
+    <div className="w-full py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-display font-bold text-center mb-12 text-gray-900 tracking-tight leading-snug">
+        <h2 className="text-2xl md:text-3xl font-display font-bold text-center mb-16 text-gray-900">
           受到各大高校信赖
         </h2>
         
@@ -58,40 +56,40 @@ export function UniversityLogoCarousel() {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          plugins={[plugin.current]}
+          className="w-full relative px-12"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-4">
             {universities.map((university, index) => (
-              <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4 flex justify-center">
+              <CarouselItem key={index} className="pl-4 md:basis-1/3 lg:basis-1/4">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Card
                         className={cn(
-                          "w-40 h-40 flex items-center justify-center p-5",
+                          "w-full aspect-square flex items-center justify-center p-8",
                           "border border-gray-100 shadow-sm hover:shadow-md transition-shadow",
                           "bg-white"
                         )}
                       >
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="h-16 w-full flex items-center justify-center relative">
+                        <div className="flex flex-col items-center gap-4">
+                          <div className="h-20 w-full flex items-center justify-center">
                             <img 
                               src={university.logo} 
                               alt={`${university.name} logo`}
-                              className="max-h-16 max-w-full object-contain"
-                              style={{ 
-                                backgroundColor: "transparent",
-                                visibility: "visible"
+                              className="max-h-20 w-auto object-contain"
+                              style={{
+                                opacity: logoStatus[university.name] ? 1 : 0.7,
+                                transition: "opacity 0.3s ease"
                               }}
                               onLoad={() => handleImageLoad(university.name)}
                               onError={(e) => {
                                 handleImageError(university.name, university.logo);
                                 (e.target as HTMLImageElement).src = "/placeholder.svg";
-                                (e.target as HTMLImageElement).style.opacity = "0.7";
                               }}
                             />
                           </div>
-                          <span className="text-sm text-center font-medium text-gray-800 line-clamp-2">
+                          <span className="text-sm font-medium text-gray-800 text-center line-clamp-2">
                             {university.name}
                           </span>
                         </div>
@@ -105,6 +103,8 @@ export function UniversityLogoCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
         </Carousel>
       </div>
     </div>

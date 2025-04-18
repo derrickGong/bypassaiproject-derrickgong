@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
@@ -30,38 +29,38 @@ export default function Index() {
     <div className="min-h-screen bg-gradient-to-b from-perplexity-50 to-white dot-pattern">
       <Navbar />
 
-      {/* Hero Section with reduced width */}
+      {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
           {/* Left Column (Reduced width) */}
           <div className="w-full lg:w-2/5 space-y-8 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-normal leading-none text-gray-900">
-              <span className="bg-clip-text text-transparent bg-gradient-hero tracking-tight">智能绕过</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight text-gray-900">
+              <span className="bg-clip-text text-transparent bg-gradient-hero">智能绕过</span>
               <br />
-              <span className="tracking-normal leading-tight">AI检测</span>
+              <span className="tracking-tight leading-tight">AI检测</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed tracking-wide">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed tracking-wide max-w-xl mx-auto lg:mx-0">
               让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等
             </p>
             
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start pt-6">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start pt-8">
               <Link to="/dashboard">
-                <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group text-white shadow-lg hover:shadow-xl transition-all">
+                <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group text-white shadow-lg hover:shadow-xl transition-all w-full sm:w-auto">
                   <span>立即开始使用</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link to="/features">
-                <Button variant="outline" size="lg" className="rounded-full font-medium px-8 border-gray-300 text-gray-700">
+                <Button variant="outline" size="lg" className="rounded-full font-medium px-8 border-gray-300 text-gray-700 hover:bg-gray-50 w-full sm:w-auto">
                   了解更多
                 </Button>
               </Link>
             </div>
           </div>
           
-          {/* Right Column (Highlighted) */}
-          <div className="mt-8 lg:mt-0 w-full lg:w-3/5 lg:pl-16 flex justify-center">
+          {/* Right Column (Increased width) */}
+          <div className="mt-8 lg:mt-0 w-full lg:w-3/5 lg:pl-16">
             <Card className="w-full max-w-2xl bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl border border-gray-100 animate-float">
               <CardContent className="p-6">
                 <h2 className="font-display text-2xl mb-4 text-center text-gray-900">快速体验</h2>
@@ -398,7 +397,7 @@ const pricingPlans = [
     name: "团队版",
     price: "￥149.9",
     period: "月",
-    description: "适合小型团队使用",
+    description: "适合小型团���使用",
     features: [
       "每月200,000字处理量",
       "顶级绕过模式",
