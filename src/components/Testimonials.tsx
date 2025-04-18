@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,8 +15,8 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "陈思宇",
-    initials: "陈",
+    name: "Siyu Cheung",
+    initials: "SC",
     avatar: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
     role: "博士研究生",
     institution: "Harvard University",
@@ -23,8 +24,8 @@ const testimonials: Testimonial[] = [
     rating: 5
   },
   {
-    name: "李雨婷",
-    initials: "李",
+    name: "Yuting Li",
+    initials: "YL",
     avatar: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
     role: "硕士生",
     institution: "Stanford University",
@@ -32,11 +33,11 @@ const testimonials: Testimonial[] = [
     rating: 5
   },
   {
-    name: "王明哲",
-    initials: "王",
+    name: "Jason Wang",
+    initials: "JW",
     avatar: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
     role: "本科生",
-    institution: "MIT",
+    institution: "Tsinghua University",
     text: "在准备申请材料和学术论文时，智绕AI给了我很大帮助。它不仅能保持文章的专业性和原创性，还能确保文章顺利通过各种检测系统。对于我们这些需要用英文写作的学生来说，这真是一个非常实用的工具。",
     rating: 5
   }
