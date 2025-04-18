@@ -23,6 +23,38 @@ const universities: University[] = [
 
 export function UniversityLogoCarousel() {
   const [offset, setOffset] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
+  
+  useEffect(() => {
+    // 预加载所有图片
+    const preloadImages = async () => {
+      const loadStatus: Record<string, boolean> = {};
+      
+      for (const university of universities) {
+        try {
+          // 创建图片元素并加载
+          const img = new Image();
+          img.src = university.logo;
+          await new Promise((resolve, reject) => {
+            img.onload = () => {
+              loadStatus[university.name] = true;
+              resolve(true);
+            };
+            img.onerror = () => {
+              loadStatus[university.name] = false;
+              reject(new Error(`Failed to load ${university.logo}`));
+            };
+          });
+        } catch (error) {
+          console.error(`Error loading ${university.logo}:`, error);
+        }
+      }
+      
+      setImagesLoaded(loadStatus);
+    };
+    
+    preloadImages();
+  }, []);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +63,8 @@ export function UniversityLogoCarousel() {
     
     return () => clearInterval(interval);
   }, []);
+
+  console.log('Images loaded status:', imagesLoaded);
 
   return (
     <div className="w-full py-16 overflow-hidden bg-white">
@@ -65,7 +99,8 @@ export function UniversityLogoCarousel() {
                             alt={`${university.name} logo`}
                             className="max-h-16 w-auto object-contain"
                             onError={(e) => {
-                              // Fallback image if logo fails to load
+                              console.error(`Error loading ${university.logo}`);
+                              // 在加载失败时显示错误信息
                               (e.target as HTMLImageElement).src = "/placeholder.svg";
                               (e.target as HTMLImageElement).style.opacity = "0.7";
                             }}
