@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
@@ -30,49 +31,51 @@ export default function Index() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
+      <section className="pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
           {/* Left Column (Reduced width) */}
-          <div className="w-full lg:w-1/3 space-y-8 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight text-gray-900">
-              <span className="bg-clip-text text-transparent bg-gradient-hero">智能绕过</span>
-              <br />
-              <span className="tracking-tight leading-tight">AI检测</span>
-            </h1>
-            
-            <p className="text-lg text-gray-700 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等
-            </p>
-            
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start">
-              <Link to="/dashboard">
-                <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group text-white shadow-lg hover:shadow-xl transition-all w-full sm:w-auto">
-                  <span>立即开始使用</span>
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link to="/features">
-                <Button variant="outline" size="lg" className="rounded-full font-medium px-8 border-gray-300 text-gray-700 hover:bg-gray-50 w-full sm:w-auto">
-                  了解更多
-                </Button>
-              </Link>
+          <div className="w-full lg:w-1/3 flex flex-col justify-center items-center lg:items-center text-center lg:text-center h-full">
+            <div className="space-y-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight text-gray-900">
+                <span className="bg-clip-text text-transparent bg-gradient-hero">智能绕过</span>
+                <br />
+                <span className="tracking-tight leading-tight">AI检测</span>
+              </h1>
+              
+              <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
+                让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等
+              </p>
+              
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-6 justify-center">
+                <Link to="/dashboard">
+                  <Button size="lg" className="rounded-full font-medium px-8 bg-brand-500 hover:bg-brand-600 group text-white shadow-lg hover:shadow-xl transition-all w-full sm:w-auto">
+                    <span>立即开始使用</span>
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link to="/features">
+                  <Button variant="outline" size="lg" className="rounded-full font-medium px-8 border-gray-300 text-gray-700 hover:bg-gray-50 w-full sm:w-auto">
+                    了解更多
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
           
           {/* Right Column (Increased width with larger demo box) */}
-          <div className="w-full lg:w-2/3 lg:pl-16">
+          <div className="w-full lg:w-2/3 lg:pl-8">
             <Card className="w-full bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl border border-gray-100 animate-float">
-              <CardContent className="p-8">
+              <CardContent className="p-6 md:p-8">
                 <h2 className="font-display text-2xl mb-4 text-center text-gray-900">快速体验</h2>
                 <p className="text-center text-gray-600 mb-8 text-lg">试试我们的AI绕过技术</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                   <div className="relative">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       输入AI生成的文本
                     </label>
                     <textarea 
-                      className="w-full h-80 p-6 rounded-xl border border-gray-200 focus:ring-brand-500 focus:border-brand-500 text-gray-700 bg-white/70 shadow-inner text-base"
+                      className="w-full h-64 md:h-80 p-4 md:p-6 rounded-xl border border-gray-200 focus:ring-brand-500 focus:border-brand-500 text-gray-700 bg-white/70 shadow-inner text-base"
                       placeholder="输入AI生成的文本"
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
@@ -87,7 +90,7 @@ export default function Index() {
                       <span className="text-sm text-gray-500">0% 检测概率</span>
                     </div>
                     <textarea 
-                      className="w-full h-80 p-6 rounded-xl border border-gray-200 bg-white/70 text-gray-700 shadow-inner text-base"
+                      className="w-full h-64 md:h-80 p-4 md:p-6 rounded-xl border border-gray-200 bg-white/70 text-gray-700 shadow-inner text-base"
                       placeholder="处理后的文本" 
                       value={outputText}
                       readOnly
@@ -152,7 +155,7 @@ export default function Index() {
       <section className="py-16 px-4 bg-perplexity-50 dot-pattern">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
               <h2 className="text-3xl font-bold font-display text-gray-900 mb-6">{t('home.tech.title')}</h2>
               <ul className="space-y-5">
                 <li className="flex items-start">
@@ -290,13 +293,6 @@ print(result["bypassed_text"])`}</code>
               </div>
             ))}
           </div>
-          
-          <div className="mt-8 text-center">
-            <Link to="/pricing" className="text-brand-500 hover:text-brand-600 font-medium inline-flex items-center">
-              查看完整价格方案
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -392,7 +388,7 @@ const pricingPlans = [
     name: "团队版",
     price: "￥149.9",
     period: "月",
-    description: "适合小型团���使用",
+    description: "适合小型团队使用",
     features: [
       "每月200,000字处理量",
       "顶级绕过模式",

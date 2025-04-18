@@ -13,6 +13,11 @@ interface University {
 }
 
 const universities: University[] = [
+  { name: "哈佛大学", logo: "/universities/harvard.png", country: "美国" },
+  { name: "斯坦福大学", logo: "/universities/stanford.png", country: "美国" },
+  { name: "麻省理工学院", logo: "/universities/mit.png", country: "美国" },
+  { name: "牛津大学", logo: "/universities/oxford.png", country: "英国" },
+  { name: "剑桥大学", logo: "/universities/cambridge.png", country: "英国" },
   { name: "清华大学", logo: "/universities/tsinghua.png", country: "中国" },
   { name: "北京大学", logo: "/universities/peking.png", country: "中国" },
   { name: "浙江大学", logo: "/universities/zju.png", country: "中国" },
@@ -21,11 +26,6 @@ const universities: University[] = [
   { name: "中国人民大学", logo: "/universities/ruc.png", country: "中国" },
   { name: "武汉大学", logo: "/universities/whu.png", country: "中国" },
   { name: "上海交通大学", logo: "/universities/sjtu.png", country: "中国" },
-  { name: "哈佛大学", logo: "/universities/harvard.png", country: "美国" },
-  { name: "斯坦福大学", logo: "/universities/stanford.png", country: "美国" },
-  { name: "麻省理工学院", logo: "/universities/mit.png", country: "美国" },
-  { name: "牛津大学", logo: "/universities/oxford.png", country: "英国" },
-  { name: "剑桥大学", logo: "/universities/cambridge.png", country: "英国" },
   { name: "苏黎世联邦理工学院", logo: "/universities/eth.png", country: "瑞士" },
   { name: "帝国理工学院", logo: "/universities/imperial.png", country: "英国" },
   { name: "加州理工学院", logo: "/universities/caltech.png", country: "美国" },
@@ -34,9 +34,11 @@ const universities: University[] = [
 export function UniversityLogoCarousel() {
   const [logoStatus, setLogoStatus] = useState<Record<string, boolean>>({});
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 2000, stopOnInteraction: false })
   );
-
+  
+  const [api, setApi] = React.useState<any>(null);
+  
   useEffect(() => {
     // 预加载所有图片
     universities.forEach(university => {
@@ -46,6 +48,22 @@ export function UniversityLogoCarousel() {
       img.onerror = () => setLogoStatus(prev => ({ ...prev, [university.name]: false }));
     });
   }, []);
+
+  // 确保自动轮播开始
+  useEffect(() => {
+    if (!api) return;
+    
+    // 设置自动滚动
+    api.on('init', () => {
+      console.log('Carousel initialized');
+    });
+    
+    return () => {
+      if (api) {
+        api.off('init');
+      }
+    };
+  }, [api]);
 
   return (
     <div className="w-full py-20 bg-gray-50">
@@ -60,7 +78,8 @@ export function UniversityLogoCarousel() {
             loop: true,
           }}
           plugins={[plugin.current]}
-          className="w-full relative px-12"
+          setApi={setApi}
+          className="w-full relative px-4 md:px-12"
         >
           <CarouselContent className="-ml-4">
             {universities.map((university, index) => (
@@ -70,20 +89,20 @@ export function UniversityLogoCarousel() {
                     <TooltipTrigger asChild>
                       <Card
                         className={cn(
-                          "p-6 h-40 flex items-center justify-center",
+                          "p-4 h-32 flex items-center justify-center",
                           "border border-gray-100 shadow-sm hover:shadow-md transition-all",
                           "bg-white"
                         )}
                       >
-                        <div className="flex flex-col items-center gap-4">
-                          <div className="h-20 w-full flex items-center justify-center">
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="h-16 w-full flex items-center justify-center">
                             <img 
                               src={university.logo} 
                               alt={`${university.name} logo`}
                               className={cn(
-                                "max-h-16 w-auto object-contain",
+                                "max-h-12 w-auto max-w-full object-contain",
                                 "transition-opacity duration-300",
-                                logoStatus[university.name] ? "opacity-100" : "opacity-70"
+                                logoStatus[university.name] ? "opacity-100" : "opacity-0"
                               )}
                             />
                           </div>
