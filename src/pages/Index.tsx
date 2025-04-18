@@ -30,7 +30,7 @@ export default function Index() {
             <div className="space-y-8">
               <h1 className="text-4xl lg:text-6xl font-display font-bold leading-tight tracking-tight my-0 px-0 mx-0 md:text-4xl text-perplexity-600 text-left">
                 <span className="bg-clip-text text-transparent bg-gradient-hero">智能绕过</span>
-                <br />
+                <br className="bg-brand-700 hover:bg-brand-600" />
                 <span className="tracking-tight leading-tight text-perplexity-500">AI检测</span>
               </h1>
               
