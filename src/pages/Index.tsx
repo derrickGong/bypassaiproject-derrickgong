@@ -20,7 +20,7 @@ export default function Index() {
     setOutputText(inputText.split("").map((char, i) => i % 10 === 0 ? char + "\u200B" : char).join(""));
   };
   return <div className="min-h-screen bg-gradient-to-b from-perplexity-50 to-white dot-pattern">
-      <Navbar />
+      <Navbar className="text-center" />
 
       {/* Hero Section */}
       <section className="pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
