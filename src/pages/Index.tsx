@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
@@ -6,7 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, ArrowRight, Zap, CheckCircle, Terminal } from "lucide-react";
 import { useState } from "react";
 import { UniversityLogoCarousel } from "@/components/UniversityLogoCarousel";
-import { Testimonials } from "@/components/Testimonials";
+import { Testimonials } from "@/components/testimonials/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Index() {
