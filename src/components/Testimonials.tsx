@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { Star } from "lucide-react";
 
 interface Testimonial {
   name: string;
@@ -45,9 +45,12 @@ const testimonials: Testimonial[] = [
 
 export function Testimonials() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-4">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-perplexity-50 to-white">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-100"></div>
+
+      <div className="relative max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-4 bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-transparent">
           用户评价
         </h2>
         <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
@@ -58,13 +61,15 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index} 
-              className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+              className="relative bg-white/70 backdrop-blur-sm border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden group"
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <Avatar className="h-12 w-12 border-2 border-white ring-2 ring-gray-100">
+                  <Avatar className="h-12 w-12 ring-2 ring-brand-100/50 transition-transform duration-300 group-hover:scale-110">
                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                    <AvatarFallback>{testimonial.initials}</AvatarFallback>
+                    <AvatarFallback className="bg-gradient-to-br from-brand-100 to-brand-200">
+                      {testimonial.initials}
+                    </AvatarFallback>
                   </Avatar>
                   <div className="ml-3">
                     <h3 className="font-medium text-gray-900">{testimonial.name}</h3>
@@ -74,18 +79,21 @@ export function Testimonials() {
                 
                 <div className="mb-4 flex">
                   {[...Array(5)].map((_, i) => (
-                    <svg 
-                      key={i} 
-                      className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`} 
-                      fill="currentColor" 
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
+                    <Star 
+                      key={i}
+                      className={`w-4 h-4 ${
+                        i < testimonial.rating 
+                          ? 'text-yellow-400 fill-yellow-400' 
+                          : 'text-gray-300'
+                      } transition-colors duration-300`}
+                    />
                   ))}
                 </div>
                 
-                <p className="text-gray-700 leading-relaxed">"{testimonial.text}"</p>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <p className="text-gray-700 leading-relaxed">"{testimonial.text}"</p>
+                </div>
                 
               </CardContent>
             </Card>
