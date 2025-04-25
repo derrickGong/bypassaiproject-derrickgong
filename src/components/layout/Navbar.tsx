@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Menu, X, Upload, History, Gift, Zap } from "lucide-react";
@@ -11,7 +10,7 @@ export function Navbar() {
   const { t } = useLanguage();
 
   return (
-    <nav className="bg-white/70 backdrop-blur-md border-b border-gray-100 fixed w-full z-10">
+    <nav className="bg-[#faf9f6]/70 backdrop-blur-md border-b border-gray-100 fixed w-full z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
@@ -29,9 +28,6 @@ export function Navbar() {
               </Link>
               <Link to="/pricing" className="text-gray-700 hover:text-brand-500 px-3 py-2 rounded-full text-sm font-medium transition-colors">
                 {t('nav.pricing')}
-              </Link>
-              <Link to="/api" className="text-gray-700 hover:text-brand-500 px-3 py-2 rounded-full text-sm font-medium transition-colors">
-                {t('nav.api')}
               </Link>
               <Link to="/dashboard" className="text-gray-700 hover:text-brand-500 px-3 py-2 rounded-full text-sm font-medium flex items-center transition-colors">
                 <Zap className="mr-1 h-4 w-4" />
@@ -67,9 +63,6 @@ export function Navbar() {
             </Link>
             <Link to="/pricing" className="text-gray-700 hover:text-brand-500 block px-3 py-2 rounded-md text-base font-medium">
               {t('nav.pricing')}
-            </Link>
-            <Link to="/api" className="text-gray-700 hover:text-brand-500 block px-3 py-2 rounded-md text-base font-medium">
-              {t('nav.api')}
             </Link>
             <Link to="/dashboard" className="text-gray-700 hover:text-brand-500 block px-3 py-2 rounded-md text-base font-medium flex items-center">
               <Zap className="mr-1 h-4 w-4" />
