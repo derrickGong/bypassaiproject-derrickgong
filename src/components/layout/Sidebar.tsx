@@ -1,16 +1,19 @@
 
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FileText, History, Gift, ChevronDown, ChevronUp } from "lucide-react";
+import { FileText, History, Gift, ChevronDown, ChevronUp, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function Sidebar() {
   const location = useLocation();
   const [showOtherApps, setShowOtherApps] = React.useState(false);
   const { t } = useLanguage();
+  const { user, signOut } = useAuth();
   
   // Calculate usage for the progress bar
   const wordsUsed = 2300;
@@ -21,12 +24,45 @@ export function Sidebar() {
     return location.pathname === path;
   };
 
+  // Get user initials for avatar
+  const getUserInitials = () => {
+    if (!user) return '';
+    const name = user.user_metadata?.full_name || '';
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
   return (
     <div className="w-64 h-screen bg-white border-r border-gray-100 flex flex-col fixed left-0 top-0">
       {/* Logo */}
       <div className="flex items-center p-5">
         <span className="text-brand-500 font-bold text-xl">{t('app.name')}</span>
       </div>
+
+      {/* User Profile */}
+      {user && (
+        <div className="px-5 py-3 border-b border-gray-100">
+          <div className="flex items-center space-x-3">
+            <Avatar>
+              <AvatarFallback className="bg-brand-100 text-brand-500">
+                {getUserInitials()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col">
+              <span className="text-sm font-medium text-gray-700">
+                {user.user_metadata?.full_name || '用户'}
+              </span>
+              <span className="text-xs text-gray-500 truncate max-w-[140px]">
+                {user.email}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Navigation */}
       <div className="flex-1">
@@ -127,6 +163,20 @@ export function Sidebar() {
           </div>
         )}
       </div>
+
+      {/* Logout */}
+      {user && (
+        <div className="px-5 py-3 border-t border-gray-100">
+          <Button 
+            variant="ghost" 
+            className="w-full justify-start text-gray-700 hover:bg-red-50 hover:text-red-500"
+            onClick={() => signOut()}
+          >
+            <LogOut size={18} className="mr-2" />
+            {t('nav.logout')}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
