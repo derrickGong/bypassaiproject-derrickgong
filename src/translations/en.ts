@@ -14,6 +14,7 @@ const translations = {
   'nav.register': 'Register',
   'nav.history': 'History',
   'nav.invite': 'Invite Friends',
+  'nav.logout': 'Logout',
 
   // Dashboard
   'dashboard.bypass': 'Bypass AI Detection',

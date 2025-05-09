@@ -14,6 +14,7 @@ const translations = {
   'nav.register': '注册',
   'nav.history': '历史记录',
   'nav.invite': '邀请好友',
+  'nav.logout': '退出登录',
 
   // Dashboard
   'dashboard.bypass': 'Bypass AI 检测',
