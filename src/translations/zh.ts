@@ -155,7 +155,7 @@ const translations = {
   'pricing.faq.change': '可以随时更换方案吗？',
   'pricing.faq.change.answer': '是的，您可以随时升级、降级或取消您的订阅。升级时，我们会根据剩余天数按比例计算费用。降级或取消将在当前订阅期结束后生效。',
   'pricing.faq.api': '如何获取API密钥？',
-  'pricing.faq.api.answer': '专业版和团队版用户可以在账户设置中生成API密钥。生成后，您可以使用我们提供的文档和示例代码将智绕AI集成到您的应用程序中。',
+  'pricing.faq.api.answer': '专业版和团队版用户可以在账户设置中生成API密钥。生成后，您可以使用我们提供的文档和示例���码将智绕AI集成到您的应用程序中。',
   'pricing.questions': '还有其他问题？',
   'pricing.contact': '联系我们获取帮助',
   'pricing.ready': '准备好开始使用了吗？',

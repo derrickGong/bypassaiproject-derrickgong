@@ -3,12 +3,14 @@ import React, { createContext, useState, useContext, ReactNode, useEffect } from
 import enTranslations from '@/translations/en';
 import zhTranslations from '@/translations/zh';
 
+// Define a union type of all possible translation keys
+type TranslationKey = keyof typeof zhTranslations;
 type Language = 'zh' | 'en';
 type TranslationsType = typeof zhTranslations;
 
 interface LanguageContextType {
   language: Language;
-  t: (key: keyof typeof zhTranslations) => string;
+  t: (key: TranslationKey) => string;
   toggleLanguage: () => void;
 }
 
@@ -51,7 +53,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const t = (key: keyof typeof zhTranslations): string => {
+  const t = (key: TranslationKey): string => {
     return translations[key] || key;
   };
 
