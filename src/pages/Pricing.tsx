@@ -16,63 +16,95 @@ const Pricing = () => {
       subtitle: "基础版",
       price: "¥25",
       originalPrice: null,
-      period: "月",
+      period: "1,000词",
       wordCount: "1,000",
       description: "快速检查和基础编辑的完美选择",
       features: [
-        "标准AI检测绕过",
-        "基础文本优化",
+        "标准AI检测绕过技术",
+        "基础文本人性化处理",
         "邮件客服支持",
-        "适合学生和偶尔使用",
+        "适合学生和轻度使用者",
       ],
       cta: "选择基础版",
       popular: false,
       icon: Shield,
       gradient: "from-slate-500 to-slate-600",
       bgGradient: "from-slate-50 to-white",
+      pricePerWord: "¥0.025/词",
     },
     {
       name: "Pro",
       subtitle: "专业版",
       price: "¥90",
       originalPrice: null,
-      period: "月", 
+      period: "4,500词", 
       wordCount: "4,500",
       description: "学生和专业人士的理想选择",
       features: [
         "高级AI检测绕过算法",
-        "语调和风格调整",
+        "语调和风格深度调整",
         "优先邮件支持", 
         "适合论文和报告写作",
-        "批量文本处理",
+        "批量文本处理功能",
+        "更高的处理成功率",
       ],
       cta: "选择专业版",
       popular: true,
       icon: Zap,
       gradient: "from-blue-500 to-purple-600",
       bgGradient: "from-blue-50 to-purple-50",
+      pricePerWord: "¥0.02/词",
+      savings: "相比基础版节省20%",
     },
     {
-      name: "Ultimate",
-      subtitle: "旗舰版", 
-      price: "¥200",
-      originalPrice: isAnnual ? "¥240" : null,
-      period: "月",
-      wordCount: "15,000",
-      description: "大规模生产的最佳选择",
+      name: "Premium",
+      subtitle: "高级版", 
+      price: "¥180",
+      originalPrice: null,
+      period: "10,000词",
+      wordCount: "10,000",
+      description: "大量文本处理的最佳选择",
       features: [
-        "隐形模式 - 最先进的AI绕过技术",
+        "顶级AI检测绕过技术",
+        "智能语义重构",
         "抄袭检测器集成",
-        "团队访问权限（最多3用户）",
         "专属客服支持",
         "自定义处理策略",
         "API接口访问",
       ],
-      cta: "选择旗舰版",
+      cta: "选择高级版",
       popular: false,
       icon: Crown,
       gradient: "from-purple-500 to-pink-600",
       bgGradient: "from-purple-50 to-pink-50",
+      pricePerWord: "¥0.018/词",
+      savings: "相比基础版节省28%",
+    },
+    {
+      name: "Ultimate",
+      subtitle: "连续包月版",
+      price: "¥200",
+      originalPrice: null,
+      period: "15,000词/月",
+      wordCount: "15,000",
+      description: "专业内容创作者和团队的终极选择",
+      features: [
+        "隐形模式 - 最先进的AI绕过技术",
+        "无限次数修改和优化",
+        "团队协作功能（最多5用户）",
+        "24/7专属技术支持",
+        "高级API和批量处理",
+        "自动续费，无需担心额度不足",
+        "优先获得新功能测试资格",
+      ],
+      cta: "开启连续包月",
+      popular: false,
+      icon: Sparkles,
+      gradient: "from-green-500 to-blue-600",
+      bgGradient: "from-green-50 to-blue-50",
+      pricePerWord: "¥0.013/词",
+      savings: "相比基础版节省48%",
+      isSubscription: true,
     },
   ];
 
@@ -89,45 +121,46 @@ const Pricing = () => {
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 bg-clip-text text-transparent mb-6">
-            解锁您的全部潜能
+            智能文本人性化处理
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            用AI的力量写作，用人性化的细致入微完善。轻松实现真实性并绕过AI检测。
+            专业的英文文本AI检测绕过服务，让AI生成的内容更加人性化和自然
           </p>
           
-          {/* Monthly/Annual Toggle */}
+          {/* Pricing Type Toggle */}
           <div className="flex items-center justify-center mb-12">
-            <span className={`text-sm font-medium mr-3 ${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>按月付费</span>
-            <button
-              onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                isAnnual ? 'bg-purple-600' : 'bg-gray-200'
-              }`}
-            >
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  isAnnual ? 'translate-x-6' : 'translate-x-1'
+            <div className="bg-white rounded-2xl p-2 shadow-lg border border-gray-200">
+              <button
+                onClick={() => setIsAnnual(false)}
+                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all ${
+                  !isAnnual ? 'bg-purple-500 text-white shadow-md' : 'text-gray-600 hover:text-gray-900'
                 }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ml-3 ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>按年付费</span>
-            <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">
-              节省2个月
-            </span>
+              >
+                按使用量付费
+              </button>
+              <button
+                onClick={() => setIsAnnual(true)}
+                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all ${
+                  isAnnual ? 'bg-green-500 text-white shadow-md' : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                连续包月 
+                <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
+                  更省钱
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing Plans */}
       <section className="pb-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {plans.map((plan) => {
+        <div className="max-w-7xl mx-auto">
+          <div className={`grid grid-cols-1 ${isAnnual ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6`}>
+            {(isAnnual ? plans : plans.slice(0, 3)).map((plan) => {
               const IconComponent = plan.icon;
-              const finalPrice = isAnnual && plan.name === "Ultimate" 
-                ? "¥200" 
-                : plan.price;
-              const savings = isAnnual && plan.name === "Ultimate" ? "原价¥240" : plan.originalPrice;
+              const isUltimate = plan.name === "Ultimate";
               
               return (
                 <div 
@@ -135,6 +168,8 @@ const Pricing = () => {
                   className={`relative bg-gradient-to-br ${plan.bgGradient} rounded-3xl border transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                     plan.popular 
                       ? 'border-purple-200 shadow-lg ring-1 ring-purple-500/20 transform scale-105' 
+                      : isUltimate
+                      ? 'border-green-200 shadow-lg ring-1 ring-green-500/20'
                       : 'border-gray-200 shadow-md hover:border-gray-300'
                   }`}
                 >
@@ -142,6 +177,14 @@ const Pricing = () => {
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                       <div className={`bg-gradient-to-r ${plan.gradient} text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg`}>
                         ⚡ 最受欢迎
+                      </div>
+                    </div>
+                  )}
+                  
+                  {isUltimate && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className={`bg-gradient-to-r ${plan.gradient} text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg`}>
+                        🔥 最超值
                       </div>
                     </div>
                   )}
@@ -158,17 +201,19 @@ const Pricing = () => {
                       
                       <div className="mt-6">
                         <div className="flex items-baseline justify-center">
-                          <span className="text-5xl font-bold text-gray-900">{finalPrice}</span>
+                          <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
                           <span className="text-gray-600 ml-2">/{plan.period}</span>
                         </div>
-                        {savings && (
-                          <div className="mt-1">
-                            <span className="text-sm text-gray-500 line-through">{savings}</span>
-                          </div>
-                        )}
-                        <div className="mt-2">
-                          <span className="text-2xl font-bold text-purple-600">{plan.wordCount}</span>
-                          <span className="text-gray-600 ml-1">字/月</span>
+                        
+                        <div className="mt-3">
+                          <span className="text-sm text-purple-600 font-medium">{plan.pricePerWord}</span>
+                          {plan.savings && (
+                            <div className="mt-1">
+                              <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+                                {plan.savings}
+                              </span>
+                            </div>
+                          )}
                         </div>
                       </div>
                       
@@ -188,7 +233,7 @@ const Pricing = () => {
                     {/* CTA Button */}
                     <Button 
                       className={`w-full py-3 rounded-xl font-semibold transition-all duration-200 ${
-                        plan.popular
+                        plan.popular || isUltimate
                           ? `bg-gradient-to-r ${plan.gradient} hover:shadow-lg text-white`
                           : 'bg-gray-900 hover:bg-gray-800 text-white'
                       }`}
@@ -196,9 +241,9 @@ const Pricing = () => {
                       {plan.cta}
                     </Button>
                     
-                    {/* Word count refresh info */}
+                    {/* Additional Info */}
                     <p className="text-xs text-gray-500 text-center mt-3">
-                      📅 您的字数额度每月自动刷新
+                      {isUltimate ? "🔄 自动续费，随时可取消" : "💳 一次性购买，立即生效"}
                     </p>
                   </div>
                 </div>

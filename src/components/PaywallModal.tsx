@@ -25,6 +25,7 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
       features: ["标准AI检测绕过", "基础文本优化", "邮件客服支持"],
       icon: Shield,
       gradient: "from-slate-500 to-slate-600",
+      pricePerWord: "¥0.025/词",
     },
     {
       name: "Pro", 
@@ -36,16 +37,21 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
       icon: Zap,
       gradient: "from-blue-500 to-purple-600",
       popular: true,
+      pricePerWord: "¥0.02/词",
+      savings: "节省20%",
     },
     {
       name: "Ultimate",
-      subtitle: "旗舰版",
+      subtitle: "连续包月版",
       price: "¥200", 
       wordCount: "15,000",
-      description: "大规模生产的最佳选择",
-      features: ["隐形模式技术", "抄袭检测器集成", "团队访问权限", "专属客服支持"],
+      description: "专业内容创作者的终极选择",
+      features: ["隐形模式技术", "无限次修改", "团队协作功能", "24/7专属支持"],
       icon: Crown,
-      gradient: "from-purple-500 to-pink-600",
+      gradient: "from-green-500 to-blue-600",
+      pricePerWord: "¥0.013/词",
+      savings: "节省48%",
+      isSubscription: true,
     },
   ];
 
@@ -78,7 +84,7 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
                 您已使用了 <span className="font-semibold text-purple-600">{wordsUsed}</span> / {totalWords} 字的免费额度
               </p>
               <p className="text-gray-500 mt-2">
-                选择升级方案，继续使用智绕AI优化您的文本
+                选择合适的方案，继续享受专业的英文文本AI检测绕过服务
               </p>
             </DialogHeader>
 
@@ -95,12 +101,20 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
                       isSelected
                         ? 'border-purple-500 ring-2 ring-purple-500/20 shadow-lg transform scale-105'
                         : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
-                    } ${plan.popular ? 'bg-gradient-to-br from-blue-50 to-purple-50' : 'bg-white'}`}
+                    } ${plan.popular ? 'bg-gradient-to-br from-blue-50 to-purple-50' : plan.isSubscription ? 'bg-gradient-to-br from-green-50 to-blue-50' : 'bg-white'}`}
                   >
                     {plan.popular && (
                       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                         <div className={`bg-gradient-to-r ${plan.gradient} text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg`}>
                           ⚡ 推荐
+                        </div>
+                      </div>
+                    )}
+
+                    {plan.isSubscription && (
+                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <div className={`bg-gradient-to-r ${plan.gradient} text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg`}>
+                          🔥 超值
                         </div>
                       </div>
                     )}
@@ -115,12 +129,18 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
                       
                       <div className="mb-4">
                         <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                        <span className="text-gray-600 ml-1">/月</span>
+                        <span className="text-gray-600 ml-1">/{plan.wordCount}词</span>
                       </div>
-                      
+
                       <div className="mb-4">
-                        <span className="text-lg font-bold text-purple-600">{plan.wordCount}</span>
-                        <span className="text-gray-600 ml-1">字/月</span>
+                        <span className="text-sm text-purple-600 font-medium">{plan.pricePerWord}</span>
+                        {plan.savings && (
+                          <div className="mt-1">
+                            <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+                              {plan.savings}
+                            </span>
+                          </div>
+                        )}
                       </div>
                       
                       <div className="space-y-2 text-left">
@@ -142,7 +162,7 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
                 onClick={handleUpgrade}
                 className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 text-lg font-semibold rounded-xl"
               >
-                升级到 {selectedPlanData?.subtitle} - {selectedPlanData?.price}/月
+                立即升级 {selectedPlanData?.subtitle} - {selectedPlanData?.price}
               </Button>
               <Button
                 variant="ghost"
@@ -161,7 +181,8 @@ const PaywallModal = ({ open, onClose, wordsUsed = 500, totalWords = 500 }: Payw
                 选择支付方式
               </DialogTitle>
               <p className="text-gray-600 mt-2">
-                {selectedPlanData?.subtitle} - {selectedPlanData?.price}/月 • {selectedPlanData?.wordCount}字/月
+                {selectedPlanData?.subtitle} - {selectedPlanData?.price}/{selectedPlanData?.wordCount}词
+                {selectedPlanData?.isSubscription && <span className="text-green-600 ml-2">• 自动续费</span>}
               </p>
             </DialogHeader>
 
