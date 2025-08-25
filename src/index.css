@@ -40,39 +40,6 @@
 
     --radius: 0.75rem;
 
-    /* GPTZero-inspired green color system */
-    --text-primary: 210 24% 16%;
-    --text-secondary: 210 16% 46%;
-    --text-tertiary: 210 10% 64%;
-    --text-accent: 167 70% 41%;
-    --text-success: 142 76% 36%;
-    --text-warning: 45 93% 47%;
-    --text-blue: 221 83% 53%;
-    --text-purple: 262 52% 47%;
-    
-    /* Enhanced green-based gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(167, 70%, 41%) 0%, hsl(210, 24%, 16%) 100%);
-    --gradient-green-blue: linear-gradient(135deg, hsl(167, 70%, 41%) 0%, hsl(221, 83%, 53%) 100%);
-    --gradient-dark-subtle: linear-gradient(135deg, hsl(210, 24%, 16%) 0%, hsl(210, 16%, 46%) 100%);
-    --gradient-light-green: linear-gradient(135deg, hsl(167, 70%, 85%) 0%, hsl(167, 70%, 70%) 100%);
-    --gradient-multi: linear-gradient(135deg, hsl(167, 70%, 41%) 0%, hsl(221, 83%, 53%) 50%, hsl(262, 52%, 47%) 100%);
-    
-    /* Background alternating colors - more subtle */
-    --bg-primary: 210 20% 98%;
-    --bg-secondary: 210 25% 96%;
-    --bg-tertiary: 210 20% 94%;
-    --bg-accent: 167 25% 96%;
-    
-    /* Button colors - green theme */
-    --button-primary: 167 70% 41%;
-    --button-primary-hover: 167 70% 35%;
-    --button-secondary: 221 83% 53%;
-    --button-secondary-hover: 221 83% 43%;
-    --button-tertiary: 210 24% 16%;
-    --button-tertiary-hover: 210 24% 26%;
-    --button-accent: 262 52% 47%;
-    --button-accent-hover: 262 52% 37%;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -129,10 +96,11 @@
   }
 
   body {
-    @apply font-sans leading-relaxed tracking-wide;
-    background: linear-gradient(135deg, hsl(var(--bg-primary)) 0%, hsl(var(--bg-secondary)) 50%, hsl(var(--bg-tertiary)) 100%);
-    background-attachment: fixed;
-    color: hsl(var(--text-primary));
+    @apply text-foreground font-sans leading-relaxed tracking-wide;
+    background-color: #F9FAFB;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0);
+    background-size: 20px 20px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
@@ -184,17 +152,10 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Enhanced card styles with rounded corners */
-.gptzero-rounded {
-  border-radius: 12px;
-}
-
-.gptzero-rounded-lg {
-  border-radius: 16px;
-}
-
-.gptzero-rounded-xl {
-  border-radius: 20px;
+/* Custom dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(#2e8cff20 1px, transparent 1px);
+  background-size: 25px 25px;
 }
 
 /* Button text styles for better visibility */
@@ -222,25 +183,17 @@
 }
 
 .gptzero-textarea {
-  background: rgba(248, 250, 252, 0.8);
-  border: 1px solid hsl(var(--border));
-  border-radius: 12px;
+  background: transparent;
+  border: none;
   outline: none;
   resize: none;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color: hsl(var(--text-primary));
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gptzero-textarea:focus {
-  border-color: hsl(var(--text-accent));
-  box-shadow: 0 0 0 3px hsla(var(--text-accent), 0.1);
 }
 
 .gptzero-textarea::placeholder {
-  color: hsl(var(--text-tertiary));
+  color: #9CA3AF;
 }
 
 /* Container styles */
@@ -263,183 +216,4 @@
 /* Text contrast enhancement */
 .enhanced-text {
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-/* GPTZero-inspired gradient text effects */
-.gradient-text-primary {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-}
-
-.gradient-text-subtle {
-  background: var(--gradient-dark-subtle);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-green-blue {
-  background: var(--gradient-green-blue);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-light-green {
-  background: var(--gradient-light-green);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-multi {
-  background: var(--gradient-multi);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-primary-gptzero {
-  color: hsl(var(--text-primary));
-}
-
-.text-secondary-gptzero {
-  color: hsl(var(--text-secondary));
-}
-
-.text-accent-gptzero {
-  color: hsl(var(--text-accent));
-}
-
-.text-tertiary-gptzero {
-  color: hsl(var(--text-tertiary));
-}
-
-.text-success-gptzero {
-  color: hsl(var(--text-success));
-}
-
-.text-warning-gptzero {
-  color: hsl(var(--text-warning));
-}
-
-.text-blue-gptzero {
-  color: hsl(var(--text-blue));
-}
-
-.text-purple-gptzero {
-  color: hsl(var(--text-purple));
-}
-
-/* Section background alternating colors */
-.bg-section-primary {
-  background: hsl(var(--bg-primary));
-}
-
-.bg-section-secondary {
-  background: hsl(var(--bg-secondary));
-}
-
-.bg-section-accent {
-  background: hsl(var(--bg-accent));
-}
-
-/* Clean section styling */
-.section-clean {
-  border: none;
-  box-shadow: none;
-}
-
-/* Sophisticated button styling */
-.btn-primary-gptzero {
-  background: hsl(var(--button-primary));
-  color: white;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px hsla(var(--button-primary), 0.25);
-  border-radius: 12px;
-}
-
-.btn-primary-gptzero:hover {
-  background: hsl(var(--button-primary-hover));
-  box-shadow: 0 4px 16px hsla(var(--button-primary), 0.35);
-  transform: translateY(-1px);
-}
-
-.btn-secondary-gptzero {
-  background: hsl(var(--button-secondary));
-  color: white;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px hsla(var(--button-secondary), 0.25);
-  border-radius: 12px;
-}
-
-.btn-secondary-gptzero:hover {
-  background: hsl(var(--button-secondary-hover));
-  box-shadow: 0 4px 16px hsla(var(--button-secondary), 0.35);
-  transform: translateY(-1px);
-}
-
-.btn-accent-gptzero {
-  background: hsl(var(--button-accent));
-  color: white;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px hsla(var(--button-accent), 0.25);
-  border-radius: 12px;
-}
-
-.btn-accent-gptzero:hover {
-  background: hsl(var(--button-accent-hover));
-  box-shadow: 0 4px 16px hsla(var(--button-accent), 0.35);
-  transform: translateY(-1px);
-}
-
-.btn-gradient-gptzero {
-  background: var(--gradient-primary);
-  color: white;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 16px hsla(167, 70%, 41%, 0.3);
-  border-radius: 12px;
-}
-
-.btn-gradient-gptzero:hover {
-  box-shadow: 0 8px 24px hsla(167, 70%, 41%, 0.4);
-  transform: translateY(-2px);
-}
-
-/* Frosted glass card effect */
-.frosted-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* Symmetric text boxes */
-.symmetric-textarea {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid hsl(var(--text-tertiary) / 0.3);
-  border-radius: 12px;
-  outline: none;
-  resize: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: hsl(var(--text-primary));
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 200px;
-  padding: 16px;
-}
-
-.symmetric-textarea:focus {
-  border-color: hsl(var(--text-accent));
-  box-shadow: 0 0 0 3px hsla(var(--text-accent), 0.1);
-}
-
-.symmetric-textarea::placeholder {
-  color: hsl(var(--text-tertiary));
 }
