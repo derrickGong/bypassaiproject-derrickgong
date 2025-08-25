@@ -34,8 +34,8 @@ export default function Index() {
       {/* Main Container - GPTZero Style */}
       <div className="gptzero-container">
         
-        {/* Hero Section */}
-        <section className="pt-32 pb-20">
+        {/* Hero Section - Primary Background */}
+        <section className="bg-section-primary pt-32 pb-20">
           <div className="text-center mb-16">
             <h1 className="gradient-text-primary mb-8 mx-auto max-w-4xl leading-none">
               智能绕过 AI 检测
@@ -60,17 +60,17 @@ export default function Index() {
           </div>
 
           {/* Demo Card */}
-          <div className="frosted-card p-8 mb-20">
-            <h2 className="text-2xl font-semibold text-primary-gptzero text-center mb-4">快速体验</h2>
+          <div className="frosted-card gptzero-rounded-xl p-8 mb-20">
+            <h2 className="text-2xl font-semibold gradient-text-blue-green text-center mb-4">快速体验</h2>
             <p className="text-center text-secondary-gptzero mb-8 gptzero-subtitle mx-auto">试试我们的AI绕过技术</p>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium text-primary-gptzero mb-3">
+                <label className="block text-sm font-medium gradient-text-subtle mb-3">
                   输入AI生成的文本
                 </label>
                 <textarea 
-                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-primary-gptzero"
+                  className="gptzero-textarea w-full h-80 p-6"
                   placeholder="在此输入您的AI生成内容..."
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
@@ -79,13 +79,13 @@ export default function Index() {
               
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <label className="block text-sm font-medium text-primary-gptzero">
+                  <label className="block text-sm font-medium gradient-text-subtle">
                     处理后的文本
                   </label>
-                  <span className="text-sm text-green-600 font-medium">0% 检测概率</span>
+                  <span className="text-sm text-success-gptzero font-medium gptzero-rounded px-2 py-1 bg-green-50">0% 检测概率</span>
                 </div>
                 <textarea 
-                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 bg-gray-50 text-primary-gptzero"
+                  className="gptzero-textarea w-full h-80 p-6 bg-slate-50"
                   placeholder="处理后的文本将在这里显示" 
                   value={outputText}
                   readOnly
@@ -107,10 +107,10 @@ export default function Index() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20">
-          <div className="frosted-card p-12">
-            <h2 className="text-3xl font-bold gradient-text-subtle text-center mb-6">
+        {/* Features Section - Secondary Background */}
+        <section className="bg-section-secondary py-20">
+          <div className="frosted-card gptzero-rounded-xl p-12">
+            <h2 className="text-3xl font-bold gradient-text-blue-green text-center mb-6">
               为什么选择智绕 AI
             </h2>
             <p className="gptzero-subtitle text-secondary-gptzero text-center mx-auto mb-12">
@@ -120,70 +120,70 @@ export default function Index() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-blue-50 gptzero-rounded flex items-center justify-center mx-auto mb-4">
                     {feature.icon}
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-primary-gptzero">{feature.title}</h3>
-                  <p className="text-secondary-gptzero leading-relaxed">{feature.description}</p>
+                  <p className="text-tertiary-gptzero leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* University Logos */}
-        <section className="py-16">
-          <div className="gptzero-card p-12">
+        {/* University Logos - Primary Background */}
+        <section className="bg-section-primary py-16">
+          <div className="gptzero-card gptzero-rounded-xl p-12">
             <UniversityLogoCarousel />
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-16">
-          <div className="gptzero-card">
+        {/* Testimonials - Secondary Background */}
+        <section className="bg-section-secondary py-16">
+          <div className="gptzero-card gptzero-rounded-xl">
             <Testimonials />
           </div>
         </section>
 
-        {/* Advanced Features */}
-        <section className="py-20">
-          <div className="gptzero-card p-12">
+        {/* Advanced Features - Primary Background */}
+        <section className="bg-section-primary py-20">
+          <div className="gptzero-card gptzero-rounded-xl p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.tech.title')}</h2>
+                <h2 className="text-3xl font-bold gradient-text-subtle mb-6">{t('home.tech.title')}</h2>
                 <ul className="space-y-5">
                   <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{t('home.tech.feature1')}</span>
+                    <CheckCircle className="h-6 w-6 text-success-gptzero mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-secondary-gptzero leading-relaxed">{t('home.tech.feature1')}</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{t('home.tech.feature2')}</span>
+                    <CheckCircle className="h-6 w-6 text-success-gptzero mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-secondary-gptzero leading-relaxed">{t('home.tech.feature2')}</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{t('home.tech.feature3')}</span>
+                    <CheckCircle className="h-6 w-6 text-success-gptzero mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-secondary-gptzero leading-relaxed">{t('home.tech.feature3')}</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{t('home.tech.feature4')}</span>
+                    <CheckCircle className="h-6 w-6 text-success-gptzero mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-secondary-gptzero leading-relaxed">{t('home.tech.feature4')}</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{t('home.tech.feature5')}</span>
+                    <CheckCircle className="h-6 w-6 text-success-gptzero mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-secondary-gptzero leading-relaxed">{t('home.tech.feature5')}</span>
                   </li>
                 </ul>
                 
                 <div className="mt-8">
                   <Link to="/features">
-                    <Button className="bg-gray-900 hover:bg-gray-800 rounded-lg text-white">
+                    <Button className="btn-primary-gptzero gptzero-rounded text-white">
                       {t('home.tech.viewAll')} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                 </div>
               </div>
               
-              <div className="bg-gray-900 p-6 rounded-lg">
+              <div className="bg-gray-900 p-6 gptzero-rounded-lg">
                 <div className="flex items-center mb-3">
                   <div className="flex space-x-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -223,41 +223,41 @@ print(result["bypassed_text"])`}</code>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="py-20">
-          <div className="gptzero-card p-12">
+        {/* Pricing Section - Secondary Background */}
+        <section className="bg-section-secondary py-20">
+          <div className="gptzero-card gptzero-rounded-xl p-12">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full mb-8">
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-50 to-blue-50 gptzero-rounded mb-8">
                 <Sparkles className="h-4 w-4 text-purple-500 mr-2" />
-                <span className="text-sm font-medium text-gray-600">智能文本人性化处理方案</span>
+                <span className="text-sm font-medium text-tertiary-gptzero">智能文本人性化处理方案</span>
               </div>
               
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold gradient-text-primary mb-6">
                 简单透明的价格方案
               </h2>
-              <p className="gptzero-subtitle text-gray-600 mx-auto mb-8">
+              <p className="gptzero-subtitle text-secondary-gptzero mx-auto mb-8">
                 专业的英文文本AI检测绕过服务，让AI生成的内容更加人性化和自然
               </p>
               
               {/* Pricing Type Toggle */}
               <div className="flex items-center justify-center mb-12">
-                <div className="bg-gray-100 rounded-lg p-1">
+                <div className="bg-slate-100 gptzero-rounded p-1">
                   <button
                     onClick={() => setIsAnnual(false)}
-                    className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
-                      !isAnnual ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+                    className={`px-6 py-2 gptzero-rounded text-sm font-medium transition-all ${
+                      !isAnnual ? 'bg-white text-primary-gptzero shadow-sm' : 'text-tertiary-gptzero hover:text-primary-gptzero'
                     }`}
                   >
                     按使用量付费
                   </button>
                   <button
                     onClick={() => setIsAnnual(true)}
-                    className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
-                      isAnnual ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+                    className={`px-6 py-2 gptzero-rounded text-sm font-medium transition-all ${
+                      isAnnual ? 'bg-white text-primary-gptzero shadow-sm' : 'text-tertiary-gptzero hover:text-primary-gptzero'
                     }`}
                   >
                     连续包月
-                    <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
+                    <span className="ml-2 px-2 py-1 bg-green-100 text-success-gptzero text-xs gptzero-rounded">
                       更省钱
                     </span>
                   </button>
@@ -273,7 +273,7 @@ print(result["bypassed_text"])`}</code>
                 return (
                   <div 
                     key={plan.name}
-                    className={`relative bg-white rounded-lg border p-8 hover:shadow-lg transition-all duration-300 ${
+                    className={`relative bg-white gptzero-rounded-lg border p-8 hover:shadow-lg transition-all duration-300 ${
                       plan.popular 
                         ? 'border-blue-200 shadow-md ring-1 ring-blue-500/20' 
                         : isUltimate
@@ -283,7 +283,7 @@ print(result["bypassed_text"])`}</code>
                   >
                     {plan.popular && (
                       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <div className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                        <div className="bg-blue-500 text-white px-4 py-1 gptzero-rounded text-sm font-medium">
                           ⚡ 最受欢迎
                         </div>
                       </div>
@@ -291,7 +291,7 @@ print(result["bypassed_text"])`}</code>
                     
                     {isUltimate && (
                       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <div className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                        <div className="bg-green-500 text-white px-4 py-1 gptzero-rounded text-sm font-medium">
                           🔥 最超值
                         </div>
                       </div>
@@ -299,24 +299,24 @@ print(result["bypassed_text"])`}</code>
                     
                     {/* Plan Header */}
                     <div className="text-center mb-8">
-                      <div className="inline-flex p-3 rounded-lg bg-gray-100 mb-4">
-                        <IconComponent className="h-6 w-6 text-gray-700" />
+                      <div className="inline-flex p-3 gptzero-rounded bg-slate-100 mb-4">
+                        <IconComponent className="h-6 w-6 text-tertiary-gptzero" />
                       </div>
                       
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">{plan.name}</h3>
-                      <p className="text-sm text-gray-600 font-medium">{plan.subtitle}</p>
+                      <h3 className="text-xl font-bold text-primary-gptzero mb-1">{plan.name}</h3>
+                      <p className="text-sm text-secondary-gptzero font-medium">{plan.subtitle}</p>
                       
                       <div className="mt-6">
                         <div className="flex items-baseline justify-center">
-                          <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                          <span className="text-gray-600 ml-2">/{plan.period}</span>
+                          <span className="text-4xl font-bold gradient-text-primary">{plan.price}</span>
+                          <span className="text-secondary-gptzero ml-2">/{plan.period}</span>
                         </div>
                         
                         <div className="mt-3">
-                          <span className="text-sm text-blue-600 font-medium">{plan.pricePerWord}</span>
+                          <span className="text-sm text-accent-gptzero font-medium">{plan.pricePerWord}</span>
                           {plan.savings && (
                             <div className="mt-1">
-                              <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+                              <span className="text-xs text-success-gptzero bg-green-100 px-2 py-1 gptzero-rounded">
                                 {plan.savings}
                               </span>
                             </div>
@@ -324,15 +324,15 @@ print(result["bypassed_text"])`}</code>
                         </div>
                       </div>
                       
-                      <p className="mt-4 text-gray-600 text-sm">{plan.description}</p>
+                      <p className="mt-4 text-tertiary-gptzero text-sm">{plan.description}</p>
                     </div>
                     
                     {/* Features */}
                     <div className="space-y-3 mb-8">
                       {plan.features.map((feature, index) => (
                         <div key={index} className="flex items-start">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{feature}</span>
+                          <CheckCircle className="h-4 w-4 text-success-gptzero mr-3 flex-shrink-0 mt-0.5" />
+                          <span className="text-secondary-gptzero text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -340,10 +340,10 @@ print(result["bypassed_text"])`}</code>
                     {/* CTA Button */}
                     <Link to="/pricing">
                       <Button 
-                        className={`w-full py-2 rounded-lg font-medium transition-all duration-200 ${
+                        className={`w-full py-2 gptzero-rounded font-medium transition-all duration-200 ${
                           plan.popular || isUltimate
-                            ? 'bg-gray-900 hover:bg-gray-800 text-white'
-                            : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                            ? 'btn-primary-gptzero text-white'
+                            : 'btn-secondary-gptzero text-white'
                         }`}
                       >
                         {plan.cta}
@@ -351,7 +351,7 @@ print(result["bypassed_text"])`}</code>
                     </Link>
                     
                     {/* Additional Info */}
-                    <p className="text-xs text-gray-500 text-center mt-3">
+                    <p className="text-xs text-tertiary-gptzero text-center mt-3">
                       {isUltimate ? "🔄 自动续费，随时可取消" : "💳 一次性购买，立即生效"}
                     </p>
                   </div>
@@ -361,46 +361,46 @@ print(result["bypassed_text"])`}</code>
 
             {/* Payment Methods */}
             <div className="text-center mb-16">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">安全快捷的支付方式</h3>
-              <p className="text-gray-600 mb-8">选择您喜欢的支付方式，享受无缝购买体验</p>
+              <h3 className="text-2xl font-bold gradient-text-blue-green mb-4">安全快捷的支付方式</h3>
+              <p className="text-secondary-gptzero mb-8">选择您喜欢的支付方式，享受无缝购买体验</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
                 {/* WeChat Pay - Primary */}
-                <div className="bg-green-50 p-6 rounded-lg border border-green-200 hover:shadow-md transition-all duration-300">
+                <div className="bg-green-50 p-6 gptzero-rounded-lg border border-green-200 hover:shadow-md transition-all duration-300">
                   <WechatPayIcon className="h-12 w-12 text-green-600 mx-auto mb-3" />
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">微信支付</h4>
-                  <p className="text-sm text-gray-600 mb-3">推荐使用，支持所有微信用户</p>
+                  <h4 className="text-lg font-bold text-primary-gptzero mb-2">微信支付</h4>
+                  <p className="text-sm text-secondary-gptzero mb-3">推荐使用，支持所有微信用户</p>
                   <div className="flex items-center justify-center">
-                    <span className="text-xs text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full">
+                    <span className="text-xs text-warning-gptzero bg-yellow-100 px-2 py-1 gptzero-rounded">
                       ⭐ 最受欢迎
                     </span>
                   </div>
                 </div>
                 
                 {/* Alipay - Primary */}
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all duration-300">
+                <div className="bg-blue-50 p-6 gptzero-rounded-lg border border-blue-200 hover:shadow-md transition-all duration-300">
                   <svg className="h-12 w-12 mx-auto mb-3" viewBox="0 0 24 24" fill="#1677FF">
                     <path d="M21.422 13.253c.067-.067 0-.067 0-.067C19.43 10.197 16.107 8 12.45 8 7.126 8 2.675 12.186 2.675 17.33c0 2.59 1.342 4.92 3.467 6.642.067.067.134.067.201.067.067 0 .134-.067.134-.134l.738-2.388c0-.067 0-.134-.067-.201-.067-.067-.134-.067-.201-.067-.87.134-1.744.268-2.613.268-1.006 0-1.677-.335-1.677-1.274 0-.134 0-.268.067-.469C3.011 16.324 7.26 13.32 12.45 13.32c3.4 0 6.485 1.408 8.3 3.595.134.134.335.134.47.067.134-.67.201-.268.201-.402v-3.327Z" />
                     <path d="M7.866 19.383c0 .469.335.804.805.804.469 0 .804-.335.804-.804a.804.804 0 0 0-.804-.804c-.47 0-.805.335-.805.804Z" />
                   </svg>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">支付宝</h4>
-                  <p className="text-sm text-gray-600 mb-3">安全便捷，支持花呗分期</p>
+                  <h4 className="text-lg font-bold text-primary-gptzero mb-2">支付宝</h4>
+                  <p className="text-sm text-secondary-gptzero mb-3">安全便捷，支持花呗分期</p>
                   <div className="flex items-center justify-center">
-                    <span className="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded-full">
+                    <span className="text-xs text-accent-gptzero bg-blue-100 px-2 py-1 gptzero-rounded">
                       🛡️ 安全保障
                     </span>
                   </div>
                 </div>
               </div>
               
-              <div className="flex items-center justify-center text-sm text-gray-500">
+              <div className="flex items-center justify-center text-sm text-tertiary-gptzero">
                 <Shield className="h-4 w-4 mr-2" />
                 <span>SSL加密保护 • 支持7天无理由退款 • 24小时客服支持</span>
               </div>
             </div>
             
             <div className="text-center">
-              <Link to="/pricing" className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center text-lg">
+              <Link to="/pricing" className="text-accent-gptzero hover:text-blue-700 font-medium inline-flex items-center text-lg">
                 查看完整价格方案和更多功能
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -408,14 +408,14 @@ print(result["bypassed_text"])`}</code>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-16 mb-20">
-          <div className="gptzero-card p-12 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">准备好开始了吗？</h2>
-            <p className="gptzero-subtitle text-gray-600 mx-auto mb-8">立即注册并体验我们的AI绕过检测技术</p>
+        {/* CTA - Primary Background */}
+        <section className="bg-section-primary py-16 mb-20">
+          <div className="gptzero-card gptzero-rounded-xl p-12 text-center">
+            <h2 className="text-3xl font-bold gradient-text-primary mb-4">准备好开始了吗？</h2>
+            <p className="gptzero-subtitle text-secondary-gptzero mx-auto mb-8">立即注册并体验我们的AI绕过检测技术</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/register">
-                <Button size="lg" className="rounded-lg font-medium px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white">
+                <Button size="lg" className="btn-gradient-gptzero gptzero-rounded font-medium px-8 py-3 text-white">
                   免费注册
                 </Button>
               </Link>

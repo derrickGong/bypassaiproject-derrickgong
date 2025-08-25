@@ -40,16 +40,32 @@
 
     --radius: 0.75rem;
 
-    /* GPTZero-inspired color system */
+    /* GPTZero-inspired color system - Enhanced */
     --text-primary: 220 26% 14%;
-    --text-secondary: 220 9% 46%;
+    --text-secondary: 220 14% 35%;
+    --text-tertiary: 220 9% 55%;
     --text-accent: 221 83% 53%;
+    --text-success: 142 76% 36%;
+    --text-warning: 45 93% 47%;
+    
+    /* Enhanced gradients */
     --gradient-primary: linear-gradient(135deg, hsl(221, 83%, 53%) 0%, hsl(220, 26%, 14%) 100%);
-    --gradient-subtle: linear-gradient(135deg, hsl(220, 26%, 14%) 0%, hsl(220, 9%, 46%) 100%);
+    --gradient-blue-green: linear-gradient(135deg, hsl(221, 83%, 53%) 0%, hsl(142, 76%, 36%) 100%);
+    --gradient-dark-subtle: linear-gradient(135deg, hsl(220, 26%, 14%) 0%, hsl(220, 14%, 35%) 100%);
+    --gradient-light-blue: linear-gradient(135deg, hsl(221, 83%, 88%) 0%, hsl(221, 83%, 75%) 100%);
+    
+    /* Background alternating colors */
+    --bg-primary: 220 33% 98%;
+    --bg-secondary: 220 20% 95%;
+    --bg-tertiary: 220 13% 93%;
+    
+    /* Button colors */
     --button-primary: 220 26% 14%;
     --button-primary-hover: 220 26% 24%;
-    --button-secondary: 220 9% 46%;
-    --button-secondary-hover: 220 9% 36%;
+    --button-secondary: 221 83% 53%;
+    --button-secondary-hover: 221 83% 43%;
+    --button-tertiary: 220 14% 35%;
+    --button-tertiary-hover: 220 14% 25%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -108,7 +124,7 @@
 
   body {
     @apply font-sans leading-relaxed tracking-wide;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+    background: linear-gradient(135deg, hsl(var(--bg-primary)) 0%, hsl(var(--bg-secondary)) 50%, hsl(var(--bg-tertiary)) 100%);
     background-attachment: fixed;
     color: hsl(var(--text-primary));
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -162,10 +178,17 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Custom dot pattern background */
-.dot-pattern {
-  background-image: radial-gradient(#2e8cff20 1px, transparent 1px);
-  background-size: 25px 25px;
+/* Enhanced card styles with rounded corners */
+.gptzero-rounded {
+  border-radius: 12px;
+}
+
+.gptzero-rounded-lg {
+  border-radius: 16px;
+}
+
+.gptzero-rounded-xl {
+  border-radius: 20px;
 }
 
 /* Button text styles for better visibility */
@@ -193,17 +216,25 @@
 }
 
 .gptzero-textarea {
-  background: transparent;
-  border: none;
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
   outline: none;
   resize: none;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
+  color: hsl(var(--text-primary));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gptzero-textarea:focus {
+  border-color: hsl(var(--text-accent));
+  box-shadow: 0 0 0 3px hsla(var(--text-accent), 0.1);
 }
 
 .gptzero-textarea::placeholder {
-  color: #9CA3AF;
+  color: hsl(var(--text-tertiary));
 }
 
 /* Container styles */
@@ -238,7 +269,21 @@
 }
 
 .gradient-text-subtle {
-  background: var(--gradient-subtle);
+  background: var(--gradient-dark-subtle);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blue-green {
+  background: var(--gradient-blue-green);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-light-blue {
+  background: var(--gradient-light-blue);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -254,6 +299,27 @@
 
 .text-accent-gptzero {
   color: hsl(var(--text-accent));
+}
+
+.text-tertiary-gptzero {
+  color: hsl(var(--text-tertiary));
+}
+
+.text-success-gptzero {
+  color: hsl(var(--text-success));
+}
+
+.text-warning-gptzero {
+  color: hsl(var(--text-warning));
+}
+
+/* Section background alternating colors */
+.bg-section-primary {
+  background: hsl(var(--bg-primary));
+}
+
+.bg-section-secondary {
+  background: hsl(var(--bg-secondary));
 }
 
 /* Sophisticated button styling */
