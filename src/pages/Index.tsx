@@ -37,22 +37,22 @@ export default function Index() {
         {/* Hero Section */}
         <section className="pt-32 pb-20">
           <div className="text-center mb-16">
-            <h1 className="text-gray-900 mb-8 mx-auto max-w-4xl leading-none">
+            <h1 className="gradient-text-primary mb-8 mx-auto max-w-4xl leading-none">
               智能绕过 AI 检测
             </h1>
-            <p className="gptzero-subtitle text-gray-600 mx-auto mb-12">
+            <p className="gptzero-subtitle text-secondary-gptzero mx-auto mb-12">
               让您的内容顺利通过各类AI检测系统，包括Turnitin、GPTZero、ZeroGPT、Originality AI等专业检测工具
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
               <Link to="/dashboard">
-                <Button size="lg" className="rounded-lg font-medium px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white">
+                <Button size="lg" className="btn-gradient-gptzero rounded-lg font-medium px-8 py-3">
                   立即开始使用
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link to="/features">
-                <Button variant="outline" size="lg" className="rounded-lg font-medium px-8 py-3 border-gray-300 text-gray-700 hover:bg-gray-50">
+                <Button variant="outline" size="lg" className="btn-secondary-gptzero rounded-lg font-medium px-8 py-3">
                   了解更多
                 </Button>
               </Link>
@@ -60,17 +60,17 @@ export default function Index() {
           </div>
 
           {/* Demo Card */}
-          <div className="gptzero-card p-8 mb-20">
-            <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">快速体验</h2>
-            <p className="text-center text-gray-600 mb-8 gptzero-subtitle mx-auto">试试我们的AI绕过技术</p>
+          <div className="frosted-card p-8 mb-20">
+            <h2 className="text-2xl font-semibold text-primary-gptzero text-center mb-4">快速体验</h2>
+            <p className="text-center text-secondary-gptzero mb-8 gptzero-subtitle mx-auto">试试我们的AI绕过技术</p>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+                <label className="block text-sm font-medium text-primary-gptzero mb-3">
                   输入AI生成的文本
                 </label>
                 <textarea 
-                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gray-500 focus:border-gray-500 text-gray-700"
+                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-primary-gptzero"
                   placeholder="在此输入您的AI生成内容..."
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
@@ -79,13 +79,13 @@ export default function Index() {
               
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-primary-gptzero">
                     处理后的文本
                   </label>
                   <span className="text-sm text-green-600 font-medium">0% 检测概率</span>
                 </div>
                 <textarea 
-                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 bg-gray-50 text-gray-700"
+                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 bg-gray-50 text-primary-gptzero"
                   placeholder="处理后的文本将在这里显示" 
                   value={outputText}
                   readOnly
@@ -96,7 +96,7 @@ export default function Index() {
             <div className="mt-8 text-center">
               <Button 
                 size="lg" 
-                className="rounded-lg px-12 py-3 text-base font-medium bg-gray-900 hover:bg-gray-800 text-white"
+                className="btn-gradient-gptzero rounded-lg px-12 py-3 text-base font-medium"
                 onClick={handleBypass}
                 disabled={!inputText}
               >
@@ -109,22 +109,22 @@ export default function Index() {
 
         {/* Features Section */}
         <section className="py-20">
-          <div className="gptzero-card p-12">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
+          <div className="frosted-card p-12">
+            <h2 className="text-3xl font-bold gradient-text-subtle text-center mb-6">
               为什么选择智绕 AI
             </h2>
-            <p className="gptzero-subtitle text-gray-600 text-center mx-auto mb-12">
+            <p className="gptzero-subtitle text-secondary-gptzero text-center mx-auto mb-12">
               我们提供业内领先的AI检测绕过技术，确保您的内容安全可靠
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-lg font-semibold mb-3 text-primary-gptzero">{feature.title}</h3>
+                  <p className="text-secondary-gptzero leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
