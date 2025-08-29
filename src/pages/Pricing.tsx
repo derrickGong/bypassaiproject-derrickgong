@@ -12,99 +12,114 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: "Essential",
-      subtitle: "基础版",
-      price: "¥25",
+      name: "免费计划",
+      subtitle: "Free Plan",
+      price: "¥0",
       originalPrice: null,
-      period: "1,000词",
-      wordCount: "1,000",
-      description: "快速检查和基础编辑的完美选择",
+      period: "每月300词",
+      wordCount: "300",
+      description: "核心AI降重功能体验",
       features: [
-        "标准AI检测绕过技术",
-        "基础文本人性化处理",
-        "邮件客服支持",
-        "适合学生和轻度使用者",
+        "每月300词 (次月1日重置)",
+        "核心AI降重功能体验",
+        "所有潜在用户",
+        "损失规避 (每月重置)、习惯养成",
       ],
-      cta: "选择基础版",
+      cta: "免费开始",
       popular: false,
       icon: Shield,
       gradient: "from-slate-500 to-slate-600",
       bgGradient: "from-slate-50 to-white",
-      pricePerWord: "¥0.025/词",
+      pricePerWord: "免费",
     },
     {
-      name: "Pro",
-      subtitle: "专业版",
-      price: "¥90",
+      name: "应急包",
+      subtitle: "PAYG",
+      price: "¥60",
       originalPrice: null,
-      period: "4,500词", 
-      wordCount: "4,500",
-      description: "学生和专业人士的理想选择",
+      period: "2,000词", 
+      wordCount: "2,000",
+      description: "永不过期，即买即用",
       features: [
-        "高级AI检测绕过算法",
-        "语调和风格深度调整",
-        "优先邮件支持", 
-        "适合论文和报告写作",
-        "批量文本处理功能",
-        "更高的处理成功率",
+        "2,000词处理量",
+        "永不过期，即买即用",
+        "单篇紧急论文需求者",
+        "解决燃眉之急、低决策门槛",
       ],
-      cta: "选择专业版",
+      cta: "选择应急包",
       popular: true,
       icon: Zap,
       gradient: "from-blue-500 to-purple-600",
       bgGradient: "from-blue-50 to-purple-50",
-      pricePerWord: "¥0.02/词",
-      savings: "相比基础版节省20%",
+      pricePerWord: "¥30/千词",
     },
     {
-      name: "Premium",
-      subtitle: "高级版", 
-      price: "¥180",
+      name: "学期包",
+      subtitle: "PAYG", 
+      price: "¥500",
       originalPrice: null,
-      period: "10,000词",
-      wordCount: "10,000",
-      description: "大量文本处理的最佳选择",
+      period: "20,000词",
+      wordCount: "20,000",
+      description: "永不过期，量大优惠",
       features: [
-        "顶级AI检测绕过技术",
-        "智能语义重构",
-        "抄袭检测器集成",
-        "专属客服支持",
-        "自定义处理策略",
-        "API接口访问",
+        "20,000词处理量",
+        "永不过期，量大优惠",
+        "多篇作业、课程论文需求者",
+        "价值锚定、降低选择摩擦",
       ],
-      cta: "选择高级版",
+      cta: "选择学期包",
       popular: false,
       icon: Crown,
       gradient: "from-purple-500 to-pink-600",
       bgGradient: "from-purple-50 to-pink-50",
-      pricePerWord: "¥0.018/词",
-      savings: "相比基础版节省28%",
+      pricePerWord: "¥25/千词",
     },
     {
-      name: "Ultimate",
-      subtitle: "连续包月版",
-      price: "¥200",
+      name: "毕业论文包",
+      subtitle: "PAYG",
+      price: "¥999",
       originalPrice: null,
-      period: "15,000词/月",
-      wordCount: "15,000",
-      description: "专业内容创作者和团队的终极选择",
+      period: "50,000词",
+      wordCount: "50,000",
+      description: "永不过期，最高性价比",
       features: [
-        "隐形模式 - 最先进的AI绕过技术",
-        "无限次数修改和优化",
-        "团队协作功能（最多5用户）",
-        "24/7专属技术支持",
-        "高级API和批量处理",
-        "自动续费，无需担心额度不足",
-        "优先获得新功能测试资格",
+        "50,000词处理量",
+        "永不过期，最高性价比",
+        "毕业设计、长篇报告需求者",
+        "高价锚点，凸显其他方案价值",
       ],
-      cta: "开启连续包月",
+      cta: "选择毕业论文包",
       popular: false,
       icon: Sparkles,
       gradient: "from-green-500 to-blue-600",
       bgGradient: "from-green-50 to-blue-50",
-      pricePerWord: "¥0.013/词",
-      savings: "相比基础版节省48%",
+      pricePerWord: "~¥20/千词",
+      isSubscription: false,
+    },
+  ];
+
+  const monthlyPlans = [
+    {
+      name: "连续包月",
+      subtitle: "即将上线",
+      price: "即将上线",
+      originalPrice: null,
+      period: "敬请期待",
+      wordCount: "TBD",
+      description: "即将上线，敬请期待",
+      features: [
+        "即将上线，敬请期待",
+        "更多功能正在开发中",
+        "敬请期待我们的更新",
+      ],
+      cta: "敬请期待",
+      popular: false,
+      icon: Sparkles,
+      gradient: "from-gray-400 to-gray-500",
+      bgGradient: "from-gray-50 to-gray-100",
+      pricePerWord: "敬请期待",
       isSubscription: true,
+      comingSoon: true,
     },
   ];
 
@@ -157,8 +172,8 @@ const Pricing = () => {
       {/* Pricing Plans */}
       <section className="pb-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className={`grid grid-cols-1 ${isAnnual ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6`}>
-            {(isAnnual ? plans : plans.slice(0, 3)).map((plan) => {
+          <div className={`grid grid-cols-1 ${isAnnual ? 'lg:grid-cols-1' : 'lg:grid-cols-4'} gap-6`}>
+            {(isAnnual ? monthlyPlans : plans).map((plan) => {
               const IconComponent = plan.icon;
               const isUltimate = plan.name === "Ultimate";
               
@@ -207,13 +222,6 @@ const Pricing = () => {
                         
                         <div className="mt-3">
                           <span className="text-sm text-purple-600 font-medium">{plan.pricePerWord}</span>
-                          {plan.savings && (
-                            <div className="mt-1">
-                              <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
-                                {plan.savings}
-                              </span>
-                            </div>
-                          )}
                         </div>
                       </div>
                       
@@ -233,10 +241,13 @@ const Pricing = () => {
                     {/* CTA Button */}
                     <Button 
                       className={`w-full py-3 rounded-xl font-semibold transition-all duration-200 ${
-                        plan.popular || isUltimate
+                        (plan as any).comingSoon
+                          ? 'bg-gray-400 text-white cursor-not-allowed'
+                          : plan.popular || isUltimate
                           ? `bg-gradient-to-r ${plan.gradient} hover:shadow-lg text-white`
                           : 'bg-gray-900 hover:bg-gray-800 text-white'
                       }`}
+                      disabled={(plan as any).comingSoon}
                     >
                       {plan.cta}
                     </Button>
@@ -274,28 +285,22 @@ const Pricing = () => {
               </div>
             </div>
             
-            {/* Alipay - Primary */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200 relative overflow-hidden group hover:shadow-lg transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            {/* Alipay - Coming Soon */}
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl border border-gray-200 relative overflow-hidden group transition-all duration-300 opacity-60">
               <div className="relative">
-                <svg className="h-16 w-16 mx-auto mb-4" viewBox="0 0 24 24" fill="#1677FF">
+                <svg className="h-16 w-16 mx-auto mb-4" viewBox="0 0 24 24" fill="#9CA3AF">
                   <path d="M21.422 13.253c.067-.067 0-.067 0-.067C19.43 10.197 16.107 8 12.45 8 7.126 8 2.675 12.186 2.675 17.33c0 2.59 1.342 4.92 3.467 6.642.067.067.134.067.201.067.067 0 .134-.067.134-.134l.738-2.388c0-.067 0-.134-.067-.201-.067-.067-.134-.067-.201-.067-.87.134-1.744.268-2.613.268-1.006 0-1.677-.335-1.677-1.274 0-.134 0-.268.067-.469C3.011 16.324 7.26 13.32 12.45 13.32c3.4 0 6.485 1.408 8.3 3.595.134.134.335.134.47.067.134-.67.201-.268.201-.402v-3.327Z" />
                   <path d="M7.866 19.383c0 .469.335.804.805.804.469 0 .804-.335.804-.804a.804.804 0 0 0-.804-.804c-.47 0-.805.335-.805.804Z" />
                 </svg>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">支付宝</h3>
-                <p className="text-sm text-gray-600 mb-4">安全便捷，支持花呗分期</p>
+                <h3 className="text-xl font-bold text-gray-500 mb-2">支付宝</h3>
+                <p className="text-sm text-gray-500 mb-4">即将上线，敬请期待</p>
                 <div className="flex items-center justify-center">
-                  <Shield className="h-4 w-4 text-blue-500 mr-1" />
-                  <span className="text-sm font-medium text-gray-700">安全保障</span>
+                  <span className="text-sm font-medium text-gray-500 bg-gray-200 px-3 py-1 rounded-full">即将推出</span>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="mt-8 flex items-center justify-center text-sm text-gray-500">
-            <Shield className="h-4 w-4 mr-2" />
-            <span>SSL加密保护 • 支持7天无理由退款 • 24小时客服支持</span>
-          </div>
         </div>
       </section>
 
