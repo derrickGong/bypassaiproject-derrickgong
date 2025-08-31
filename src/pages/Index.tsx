@@ -375,7 +375,7 @@ print(result["bypassed_text"])`}</code>
                 {/* Alipay - Coming Soon */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 opacity-60">
                   <img 
-                    src="/lovable-uploads/fc950847-e533-4b60-a51c-79eaf05e696a.png" 
+                    src="/lovable-uploads/f7695b0c-0ccd-4db6-b9e3-f393cfd978b8.png" 
                     alt="Alipay Logo" 
                     className="h-12 w-12 mx-auto mb-3 opacity-60"
                   />

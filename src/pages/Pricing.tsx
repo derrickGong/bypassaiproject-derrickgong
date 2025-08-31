@@ -286,7 +286,7 @@ const Pricing = () => {
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl border border-gray-200 relative overflow-hidden group transition-all duration-300 opacity-60">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/fc950847-e533-4b60-a51c-79eaf05e696a.png" 
+                  src="/lovable-uploads/f7695b0c-0ccd-4db6-b9e3-f393cfd978b8.png" 
                   alt="Alipay Logo" 
                   className="h-16 w-16 mx-auto mb-4 opacity-60"
                 />
