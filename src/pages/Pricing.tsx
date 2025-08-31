@@ -21,9 +21,8 @@ const Pricing = () => {
       description: "核心AI降重功能体验",
       features: [
         "每月300词 (次月1日重置)",
-        "核心AI降重功能体验",
-        "所有潜在用户",
-        "损失规避 (每月重置)、习惯养成",
+        "基础AI降重功能体验（降AI率达80%）",
+        "解决基础降AI率需求",
       ],
       cta: "免费开始",
       popular: false,
@@ -43,8 +42,8 @@ const Pricing = () => {
       features: [
         "2,000词处理量",
         "永不过期，即买即用",
-        "单篇紧急论文需求者",
-        "解决燃眉之急、低决策门槛",
+        "单篇紧急论文降AI利器",
+        "解决燃眉之急",
       ],
       cta: "选择应急包",
       popular: true,
@@ -64,8 +63,7 @@ const Pricing = () => {
       features: [
         "20,000词处理量",
         "永不过期，量大优惠",
-        "多篇作业、课程论文需求者",
-        "价值锚定、降低选择摩擦",
+        "满足学期多篇课程论文降重需求",
       ],
       cta: "选择学期包",
       popular: false,
@@ -85,8 +83,8 @@ const Pricing = () => {
       features: [
         "50,000词处理量",
         "永不过期，最高性价比",
-        "毕业设计、长篇报告需求者",
-        "高价锚点，凸显其他方案价值",
+        "单词成本低至2分钱",
+        "快速解决毕业论文长篇报告需求",
       ],
       cta: "选择毕业论文包",
       popular: false,
@@ -228,7 +226,7 @@ const Pricing = () => {
                     </div>
                     
                     {/* Features */}
-                    <div className="space-y-4 mb-8 min-h-[120px]">
+                    <div className="space-y-3 mb-8 min-h-[140px]">
                       {plan.features.map((feature, index) => (
                         <div key={index} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
