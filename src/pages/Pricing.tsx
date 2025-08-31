@@ -214,13 +214,13 @@ const Pricing = () => {
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
                       
                       <div className="mt-6">
-                        <div className="flex items-baseline justify-center">
-                          <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
-                          <span className="text-gray-600 ml-2">/{plan.period}</span>
+                        <div className="flex items-baseline justify-center whitespace-nowrap">
+                          <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+                          <span className="text-gray-600 ml-1 text-sm">/{plan.period}</span>
                         </div>
                         
-                        <div className="mt-3">
-                          <span className="text-sm text-purple-600 font-medium">{plan.pricePerWord}</span>
+                        <div className="mt-2">
+                          <span className="text-xs text-purple-600 font-medium">{plan.pricePerWord}</span>
                         </div>
                       </div>
                       
