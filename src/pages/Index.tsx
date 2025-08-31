@@ -299,12 +299,11 @@ print(result["bypassed_text"])`}</code>
                     
                     {/* Plan Header */}
                     <div className="text-center mb-8">
-                      <div className="inline-flex p-3 rounded-lg bg-gray-100 mb-4">
-                        <IconComponent className="h-6 w-6 text-gray-700" />
+                      <div className={`inline-flex p-3 rounded-lg ${plan.name === "免费计划" ? "bg-gray-200" : "bg-blue-100"} mb-4`}>
+                        <IconComponent className={`h-6 w-6 ${plan.name === "免费计划" ? "text-gray-500" : "text-blue-600"}`} />
                       </div>
                       
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">{plan.name}</h3>
-                      <p className="text-sm text-gray-600 font-medium">{plan.subtitle}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">{plan.name}</h3>
                       
                       <div className="mt-6">
                         <div className="flex items-baseline justify-center">
@@ -321,11 +320,11 @@ print(result["bypassed_text"])`}</code>
                     </div>
                     
                     {/* Features */}
-                    <div className="space-y-3 mb-8">
+                    <div className="space-y-3 mb-8 min-h-[100px]">
                       {plan.features.map((feature, index) => (
                         <div key={index} className="flex items-start">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{feature}</span>
+                          <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -348,7 +347,7 @@ print(result["bypassed_text"])`}</code>
                     
                     {/* Additional Info */}
                     <p className="text-xs text-gray-500 text-center mt-3">
-                      {isUltimate ? "🔄 自动续费，随时可取消" : "💳 一次性购买，立即生效"}
+                      💳 一次性购买，立即生效
                     </p>
                   </div>
                 );
@@ -391,8 +390,8 @@ print(result["bypassed_text"])`}</code>
             </div>
             
             <div className="text-center">
-              <Link to="/pricing" className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center text-lg">
-                查看完整价格方案和更多功能
+              <Link to="/register" className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center text-lg">
+                立即开始使用
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>

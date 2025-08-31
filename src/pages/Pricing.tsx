@@ -207,12 +207,11 @@ const Pricing = () => {
                   <div className="p-8">
                     {/* Plan Header */}
                     <div className="text-center mb-8">
-                      <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-r ${plan.gradient} mb-4`}>
-                        <IconComponent className="h-8 w-8 text-white" />
+                      <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-r ${plan.name === "免费计划" ? "from-gray-400 to-gray-500" : plan.gradient} mb-4`}>
+                        <IconComponent className={`h-8 w-8 ${plan.name === "免费计划" ? "text-gray-200" : "text-white"}`} />
                       </div>
                       
-                      <h3 className="text-2xl font-bold text-gray-900 mb-1">{plan.name}</h3>
-                      <p className="text-sm text-gray-600 font-medium">{plan.subtitle}</p>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
                       
                       <div className="mt-6">
                         <div className="flex items-baseline justify-center">
@@ -229,11 +228,11 @@ const Pricing = () => {
                     </div>
                     
                     {/* Features */}
-                    <div className="space-y-4 mb-8">
+                    <div className="space-y-4 mb-8 min-h-[120px]">
                       {plan.features.map((feature, index) => (
                         <div key={index} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -254,7 +253,7 @@ const Pricing = () => {
                     
                     {/* Additional Info */}
                     <p className="text-xs text-gray-500 text-center mt-3">
-                      {isUltimate ? "🔄 自动续费，随时可取消" : "💳 一次性购买，立即生效"}
+                      💳 一次性购买，立即生效
                     </p>
                   </div>
                 </div>
