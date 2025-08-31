@@ -374,10 +374,11 @@ print(result["bypassed_text"])`}</code>
                 
                 {/* Alipay - Coming Soon */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 opacity-60">
-                  <svg className="h-12 w-12 mx-auto mb-3" viewBox="0 0 24 24" fill="#9CA3AF">
-                    <path d="M21.422 13.253c.067-.067 0-.067 0-.067C19.43 10.197 16.107 8 12.45 8 7.126 8 2.675 12.186 2.675 17.33c0 2.59 1.342 4.92 3.467 6.642.067.067.134.067.201.067.067 0 .134-.067.134-.134l.738-2.388c0-.067 0-.134-.067-.201-.067-.067-.134-.067-.201-.067-.87.134-1.744.268-2.613.268-1.006 0-1.677-.335-1.677-1.274 0-.134 0-.268.067-.469C3.011 16.324 7.26 13.32 12.45 13.32c3.4 0 6.485 1.408 8.3 3.595.134.134.335.134.47.067.134-.67.201-.268.201-.402v-3.327Z" />
-                    <path d="M7.866 19.383c0 .469.335.804.805.804.469 0 .804-.335.804-.804a.804.804 0 0 0-.804-.804c-.47 0-.805.335-.805.804Z" />
-                  </svg>
+                  <img 
+                    src="/lovable-uploads/fc950847-e533-4b60-a51c-79eaf05e696a.png" 
+                    alt="Alipay Logo" 
+                    className="h-12 w-12 mx-auto mb-3 opacity-60"
+                  />
                   <h4 className="text-lg font-bold text-gray-500 mb-2">支付宝</h4>
                   <p className="text-sm text-gray-500 mb-3">即将上线，敬请期待</p>
                   <div className="flex items-center justify-center">
