@@ -9,7 +9,9 @@ import {
   Info, 
   Check, 
   Shield, 
-  ChevronDown 
+  ChevronDown,
+  Search,
+  Target
 } from "lucide-react";
 import { toast } from "sonner";
 import { 
@@ -27,6 +29,12 @@ export default function Dashboard() {
   const [selectedMode, setSelectedMode] = useState("aggressive");
   const [isDragging, setIsDragging] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  
+  // AI Detection states
+  const [detectionText, setDetectionText] = useState("");
+  const [detectionResult, setDetectionResult] = useState<{percentage: number, algorithm: string} | null>(null);
+  const [isDetecting, setIsDetecting] = useState(false);
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState("all");
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
@@ -121,6 +129,57 @@ export default function Dashboard() {
     setText(sampleText);
     toast("示例文本已加载", {
       description: "您可以编辑或直接处理这段文本",
+    });
+  };
+
+  // AI Detection handlers
+  const handleDetectionTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDetectionText(e.target.value);
+  };
+
+  const handleDetectAI = () => {
+    if (!detectionText.trim()) {
+      toast.error("请输入要检测的文本");
+      return;
+    }
+    
+    setIsDetecting(true);
+    
+    // Mock AI detection with timeout
+    setTimeout(() => {
+      // Generate mock detection percentage based on algorithm
+      let percentage = Math.floor(Math.random() * 100);
+      
+      switch (selectedAlgorithm) {
+        case "turnitin":
+          percentage = Math.floor(Math.random() * 40) + 20; // 20-60%
+          break;
+        case "gptzero":
+          percentage = Math.floor(Math.random() * 50) + 30; // 30-80%
+          break;
+        case "zerogpt":
+          percentage = Math.floor(Math.random() * 60) + 15; // 15-75%
+          break;
+        default:
+          percentage = Math.floor(Math.random() * 70) + 25; // 25-95%
+      }
+      
+      setDetectionResult({
+        percentage,
+        algorithm: selectedAlgorithm === "all" ? "综合算法" : 
+          selectedAlgorithm === "turnitin" ? "Turnitin" :
+          selectedAlgorithm === "gptzero" ? "GPTZero" : "ZeroGPT"
+      });
+      setIsDetecting(false);
+      toast.success("AI检测完成");
+    }, 1200);
+  };
+
+  const handleTryDetectionSample = () => {
+    const sampleText = `The rapid advancement of artificial intelligence has transformed numerous industries and continues to reshape our understanding of technology's role in society. Machine learning algorithms now power everything from recommendation systems to autonomous vehicles, demonstrating unprecedented capabilities in pattern recognition and data analysis.`;
+    setDetectionText(sampleText);
+    toast("检测示例文本已加载", {
+      description: "点击检测按钮开始AI率检测",
     });
   };
   
@@ -330,6 +389,229 @@ export default function Dashboard() {
               </div>
             )}
           </Card>
+        </div>
+        
+        {/* AI Detection Section */}
+        <div className="mt-12">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-semibold">AI检测率</h2>
+            <div className="flex items-center">
+              <Button variant="ghost" size="sm" className="flex items-center gap-1 text-blue-500">
+                <Info size={16} />
+                <span>融合三家算法</span>
+              </Button>
+              <div className="text-xl font-medium ml-4">检测结果</div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Detection Input Section */}
+            <div className="flex flex-col">
+              <Card className="flex-1">
+                <CardContent className="p-6 flex flex-col h-[400px]">
+                  <textarea
+                    placeholder="在这里输入您想要检测AI率的文本"
+                    className="flex-1 resize-none border-none outline-none bg-transparent text-gray-800"
+                    value={detectionText}
+                    onChange={handleDetectionTextChange}
+                  />
+                  
+                  {!detectionText && (
+                    <div className="mt-8 border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center border-gray-200">
+                      <div className="bg-blue-50 text-blue-500 p-4 rounded-md mb-4 text-center">
+                        支持检测英文、中文等多语言文本的AI生成率
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-4 w-full mt-4">
+                        {/* Try Sample Button */}
+                        <div 
+                          className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer"
+                          onClick={handleTryDetectionSample}
+                        >
+                          <FileText size={24} className="text-gray-500 mb-2" />
+                          <span className="text-sm text-center text-gray-700">试用示例</span>
+                        </div>
+                        
+                        {/* Paste Text Button */}
+                        <div 
+                          className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer"
+                          onClick={() => {
+                            navigator.clipboard.readText().then(
+                              clipText => {
+                                setDetectionText(clipText);
+                                toast.success("已从剪贴板粘贴文本");
+                              }
+                            ).catch(err => {
+                              toast.error("无法访问剪贴板");
+                            });
+                          }}
+                        >
+                          <FileText size={24} className="text-gray-500 mb-2" />
+                          <span className="text-sm text-center text-gray-700">粘贴文本</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+              
+              <div className="mt-4 flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-gray-600">算法：</span>
+                  <Select 
+                    value={selectedAlgorithm} 
+                    onValueChange={setSelectedAlgorithm}
+                  >
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="选择算法" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">
+                        <div className="flex items-center gap-2">
+                          <Target size={16} className="text-purple-500" />
+                          <span>综合算法</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="turnitin">
+                        <div className="flex items-center gap-2">
+                          <Shield size={16} className="text-red-500" />
+                          <span>Turnitin</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="gptzero">
+                        <div className="flex items-center gap-2">
+                          <Shield size={16} className="text-blue-500" />
+                          <span>GPTZero</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="zerogpt">
+                        <div className="flex items-center gap-2">
+                          <Shield size={16} className="text-green-500" />
+                          <span>ZeroGPT</span>
+                        </div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <Button 
+                  onClick={handleDetectAI}
+                  disabled={!detectionText || isDetecting}
+                  className="px-6"
+                >
+                  {isDetecting ? (
+                    <div className="flex items-center gap-2">
+                      <div className="h-4 w-4 border-2 border-t-transparent border-white rounded-full animate-spin"></div>
+                      <span>检测中...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <Search size={16} />
+                      <span>开始检测</span>
+                    </div>
+                  )}
+                </Button>
+              </div>
+            </div>
+            
+            {/* Detection Results Section */}
+            <Card className="h-[400px] overflow-hidden flex flex-col">
+              <CardContent className="p-6 flex-1 overflow-auto">
+                {detectionResult ? (
+                  <div className="h-full flex flex-col">
+                    <div className="text-center mb-6">
+                      <div className="relative w-32 h-32 mx-auto mb-4">
+                        <div className="absolute inset-0 rounded-full border-8 border-gray-200"></div>
+                        <div 
+                          className={`absolute inset-0 rounded-full border-8 border-t-8 transform -rotate-90 ${
+                            detectionResult.percentage > 70 ? 'border-red-500' :
+                            detectionResult.percentage > 40 ? 'border-orange-500' : 'border-green-500'
+                          }`}
+                          style={{
+                            borderRightColor: 'transparent',
+                            borderBottomColor: 'transparent',
+                            borderLeftColor: 'transparent',
+                            clipPath: `polygon(50% 50%, 50% 0%, ${50 + 50 * Math.cos(2 * Math.PI * detectionResult.percentage / 100 - Math.PI/2)}% ${50 + 50 * Math.sin(2 * Math.PI * detectionResult.percentage / 100 - Math.PI/2)}%, 50% 50%)`
+                          }}
+                        ></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className={`text-2xl font-bold ${
+                              detectionResult.percentage > 70 ? 'text-red-500' :
+                              detectionResult.percentage > 40 ? 'text-orange-500' : 'text-green-500'
+                            }`}>
+                              {detectionResult.percentage}%
+                            </div>
+                            <div className="text-xs text-gray-500">AI检测率</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-lg font-medium text-gray-800">
+                          {detectionResult.percentage > 70 ? 'AI生成概率较高' :
+                           detectionResult.percentage > 40 ? 'AI生成概率中等' : 'AI生成概率较低'}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          算法来源：{detectionResult.algorithm}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <h4 className="font-medium text-gray-800 mb-2">检测建议</h4>
+                      <p className="text-sm text-gray-600">
+                        {detectionResult.percentage > 70 
+                          ? "建议使用我们的AI降重功能进行文本优化处理"
+                          : detectionResult.percentage > 40
+                          ? "文本具有一定的AI特征，建议适当调整"
+                          : "文本人性化程度良好，通过检测的概率较高"
+                        }
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="h-full flex flex-col items-center justify-center text-center">
+                    <div className="w-24 h-24 mb-4 relative">
+                      <Search className="w-full h-full text-gray-300" />
+                    </div>
+                    <h3 className="text-lg font-medium mb-2">AI检测结果将显示在这里</h3>
+                    <p className="text-gray-500 max-w-sm">
+                      在左侧输入文本，选择检测算法，然后点击"开始检测"按钮
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+              
+              {detectionResult && (
+                <div className="border-t border-gray-100 p-4 flex justify-end">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mr-2"
+                    onClick={() => {
+                      const resultText = `AI检测结果：${detectionResult.percentage}% (${detectionResult.algorithm})`;
+                      navigator.clipboard.writeText(resultText);
+                      toast.success("检测结果已复制到剪贴板");
+                    }}
+                  >
+                    复制结果
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      // Transfer detection text to main processing area
+                      setText(detectionText);
+                      toast.success("文本已转移到降重区域");
+                      // Scroll to top
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    一键降重
+                  </Button>
+                </div>
+              )}
+            </Card>
+          </div>
         </div>
         
         {/* Promotion Banner */}
