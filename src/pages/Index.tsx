@@ -133,7 +133,7 @@ export default function Index() {
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <label className="block text-sm font-medium text-gray-700">
-                    AI检测结果
+                    AI检测结果（模拟版）
                   </label>
                   <div className="flex items-center space-x-4">
                     <span className="text-xs text-gray-500">Turnitin: 45%</span>
@@ -143,15 +143,25 @@ export default function Index() {
                 </div>
                 <div className="w-full h-80 p-6 rounded-lg border border-gray-200 bg-gray-50 flex flex-col items-center justify-center">
                   <div className="relative w-32 h-32 mb-6">
-                    <div className="absolute inset-0 rounded-full border-8 border-gray-200"></div>
-                    <div className="absolute inset-0 rounded-full border-8 border-orange-500 transform -rotate-90" 
-                         style={{
-                           borderRightColor: 'transparent',
-                           borderBottomColor: 'transparent', 
-                           borderLeftColor: 'transparent',
-                           clipPath: 'polygon(50% 50%, 50% 0%, 85% 15%, 50% 50%)'
-                         }}>
-                    </div>
+                    <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e5e7eb"
+                        strokeWidth="3"
+                      />
+                      <path
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#f97316"
+                        strokeWidth="3"
+                        strokeDasharray="45, 100"
+                      />
+                    </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
                         <div className="text-2xl font-bold text-orange-500">45%</div>

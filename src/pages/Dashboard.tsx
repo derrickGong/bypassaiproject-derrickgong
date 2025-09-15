@@ -419,7 +419,7 @@ export default function Dashboard() {
                   {!detectionText && (
                     <div className="mt-8 border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center border-gray-200">
                       <div className="bg-blue-50 text-blue-500 p-4 rounded-md mb-4 text-center">
-                        支持检测英文、中文等多语言文本的AI生成率
+                        支持检测包括论文、邮件在内的各类英文文本的AI率
                       </div>
                       
                       <div className="grid grid-cols-2 gap-4 w-full mt-4">
@@ -623,7 +623,7 @@ export default function Dashboard() {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium">享受智绕 Bypass 的无限功能</h3>
-                <p className="text-gray-600">通过升级到无限计划，体验智绕 Bypass 的全部功能，没有任何限制。</p>
+                <p className="text-gray-600">升级套餐体验智绕 Bypass 的全部高级功能，随时随地降AI，完成任务，快人一步</p>
               </div>
             </div>
             <Button className="bg-blue-500 hover:bg-blue-600">升级</Button>
