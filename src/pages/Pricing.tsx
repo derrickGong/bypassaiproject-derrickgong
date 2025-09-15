@@ -21,8 +21,9 @@ const Pricing = () => {
       description: "核心AI降重功能体验",
       features: [
         "每月300词 (次月1日重置)",
-        "基础AI降重功能体验（降AI率达80%）",
-        "解决基础降AI率需求",
+        "核心AI降重功能体验",
+        "所有潜在用户",
+        "损失规避 (每月重置)、习惯养成",
       ],
       cta: "免费开始",
       popular: false,
@@ -42,8 +43,8 @@ const Pricing = () => {
       features: [
         "2,000词处理量",
         "永不过期，即买即用",
-        "单篇紧急论文降AI利器",
-        "解决燃眉之急",
+        "单篇紧急论文需求者",
+        "解决燃眉之急、低决策门槛",
       ],
       cta: "选择应急包",
       popular: true,
@@ -63,7 +64,8 @@ const Pricing = () => {
       features: [
         "20,000词处理量",
         "永不过期，量大优惠",
-        "满足学期多篇课程论文降重需求",
+        "多篇作业、课程论文需求者",
+        "价值锚定、降低选择摩擦",
       ],
       cta: "选择学期包",
       popular: false,
@@ -83,8 +85,8 @@ const Pricing = () => {
       features: [
         "50,000词处理量",
         "永不过期，最高性价比",
-        "单词成本低至2分钱",
-        "快速解决毕业论文长篇报告需求",
+        "毕业设计、长篇报告需求者",
+        "高价锚点，凸显其他方案价值",
       ],
       cta: "选择毕业论文包",
       popular: false,
@@ -212,13 +214,13 @@ const Pricing = () => {
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
                       
                       <div className="mt-6">
-                        <div className="flex items-baseline justify-center whitespace-nowrap">
-                          <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                          <span className="text-gray-600 ml-1 text-sm">/{plan.period}</span>
+                        <div className="flex items-baseline justify-center">
+                          <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
+                          <span className="text-gray-600 ml-2">/{plan.period}</span>
                         </div>
                         
-                        <div className="mt-2">
-                          <span className="text-xs text-purple-600 font-medium">{plan.pricePerWord}</span>
+                        <div className="mt-3">
+                          <span className="text-sm text-purple-600 font-medium">{plan.pricePerWord}</span>
                         </div>
                       </div>
                       
@@ -226,7 +228,7 @@ const Pricing = () => {
                     </div>
                     
                     {/* Features */}
-                    <div className="space-y-3 mb-8 min-h-[140px]">
+                    <div className="space-y-4 mb-8 min-h-[120px]">
                       {plan.features.map((feature, index) => (
                         <div key={index} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
@@ -285,11 +287,10 @@ const Pricing = () => {
             {/* Alipay - Coming Soon */}
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl border border-gray-200 relative overflow-hidden group transition-all duration-300 opacity-60">
               <div className="relative">
-                <img 
-                  src="/lovable-uploads/f7695b0c-0ccd-4db6-b9e3-f393cfd978b8.png" 
-                  alt="Alipay Logo" 
-                  className="h-16 w-16 mx-auto mb-4 opacity-60"
-                />
+                <svg className="h-16 w-16 mx-auto mb-4" viewBox="0 0 24 24" fill="#9CA3AF">
+                  <path d="M21.422 13.253c.067-.067 0-.067 0-.067C19.43 10.197 16.107 8 12.45 8 7.126 8 2.675 12.186 2.675 17.33c0 2.59 1.342 4.92 3.467 6.642.067.067.134.067.201.067.067 0 .134-.067.134-.134l.738-2.388c0-.067 0-.134-.067-.201-.067-.067-.134-.067-.201-.067-.87.134-1.744.268-2.613.268-1.006 0-1.677-.335-1.677-1.274 0-.134 0-.268.067-.469C3.011 16.324 7.26 13.32 12.45 13.32c3.4 0 6.485 1.408 8.3 3.595.134.134.335.134.47.067.134-.67.201-.268.201-.402v-3.327Z" />
+                  <path d="M7.866 19.383c0 .469.335.804.805.804.469 0 .804-.335.804-.804a.804.804 0 0 0-.804-.804c-.47 0-.805.335-.805.804Z" />
+                </svg>
                 <h3 className="text-xl font-bold text-gray-500 mb-2">支付宝</h3>
                 <p className="text-sm text-gray-500 mb-4">即将上线，敬请期待</p>
                 <div className="flex items-center justify-center">

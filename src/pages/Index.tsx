@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Check, ArrowRight, Zap, CheckCircle, Terminal, Shield, Crown, Sparkles, Search } from "lucide-react";
+import { Check, ArrowRight, Zap, CheckCircle, Terminal, Shield, Crown, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { UniversityLogoCarousel } from "@/components/UniversityLogoCarousel";
 import { Testimonials } from "@/components/testimonials/Testimonials";
@@ -103,103 +103,6 @@ export default function Index() {
                 <Zap className="mr-2 h-5 w-5" />
                 绕过AI检测
               </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* AI Detection Demo Section */}
-        <section className="py-20">
-          <div className="gptzero-card p-8 mb-20">
-            <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">AI检测率查询</h2>
-            <p className="text-center text-gray-600 mb-2 gptzero-subtitle mx-auto">
-              融合Turnitin、GPTZero、ZeroGPT三家算法
-            </p>
-            <p className="text-center text-gray-500 mb-8 text-sm">
-              精准检测文本AI生成概率，为内容审核提供可靠依据
-            </p>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  输入待检测文本
-                </label>
-                <textarea 
-                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gray-500 focus:border-gray-500 text-gray-700"
-                  placeholder="在此输入需要检测AI率的内容..."
-                  defaultValue=""
-                />
-              </div>
-              
-              <div>
-                <div className="flex justify-between items-center mb-3">
-                  <label className="block text-sm font-medium text-gray-700">
-                    AI检测结果
-                  </label>
-                  <div className="flex items-center space-x-4">
-                    <span className="text-xs text-gray-500">Turnitin: 45%</span>
-                    <span className="text-xs text-gray-500">GPTZero: 52%</span>
-                    <span className="text-xs text-gray-500">ZeroGPT: 38%</span>
-                  </div>
-                </div>
-                <div className="w-full h-80 p-6 rounded-lg border border-gray-200 bg-gray-50 flex flex-col items-center justify-center">
-                  <div className="relative w-32 h-32 mb-6">
-                    <div className="absolute inset-0 rounded-full border-8 border-gray-200"></div>
-                    <div className="absolute inset-0 rounded-full border-8 border-orange-500 transform -rotate-90" 
-                         style={{
-                           borderRightColor: 'transparent',
-                           borderBottomColor: 'transparent', 
-                           borderLeftColor: 'transparent',
-                           clipPath: 'polygon(50% 50%, 50% 0%, 85% 15%, 50% 50%)'
-                         }}>
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-orange-500">45%</div>
-                        <div className="text-xs text-gray-500">综合AI率</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-medium text-gray-800 mb-2">AI生成概率中等</p>
-                    <p className="text-sm text-gray-600">融合三家算法的综合检测结果</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 text-center">
-              <Button 
-                size="lg" 
-                className="rounded-lg px-12 py-3 text-base font-medium bg-gray-900 hover:bg-gray-800 text-white mr-4"
-              >
-                <Search className="mr-2 h-5 w-5" />
-                开始AI检测
-              </Button>
-              <Link to="/dashboard">
-                <Button 
-                  variant="outline"
-                  size="lg" 
-                  className="rounded-lg px-12 py-3 text-base font-medium border-gray-300 text-gray-700 hover:bg-gray-50"
-                >
-                  体验完整功能
-                </Button>
-              </Link>
-            </div>
-            
-            {/* Algorithm Badges */}
-            <div className="mt-8 flex justify-center space-x-6">
-              <div className="flex items-center bg-red-50 px-4 py-2 rounded-full">
-                <Shield className="h-4 w-4 text-red-500 mr-2" />
-                <span className="text-sm font-medium text-red-700">Turnitin</span>
-              </div>
-              <div className="flex items-center bg-blue-50 px-4 py-2 rounded-full">
-                <Shield className="h-4 w-4 text-blue-500 mr-2" />
-                <span className="text-sm font-medium text-blue-700">GPTZero</span>
-              </div>
-              <div className="flex items-center bg-green-50 px-4 py-2 rounded-full">
-                <Shield className="h-4 w-4 text-green-500 mr-2" />
-                <span className="text-sm font-medium text-green-700">ZeroGPT</span>
-              </div>
             </div>
           </div>
         </section>
@@ -403,13 +306,13 @@ print(result["bypassed_text"])`}</code>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">{plan.name}</h3>
                       
                       <div className="mt-6">
-                        <div className="flex items-baseline justify-center whitespace-nowrap">
-                          <span className="text-2xl font-bold text-gray-900">{plan.price}</span>
-                          <span className="text-gray-600 ml-1 text-xs">/{plan.period}</span>
+                        <div className="flex items-baseline justify-center">
+                          <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                          <span className="text-gray-600 ml-2">/{plan.period}</span>
                         </div>
                         
-                        <div className="mt-2">
-                          <span className="text-xs text-blue-600 font-medium">{plan.pricePerWord}</span>
+                        <div className="mt-3">
+                          <span className="text-sm text-blue-600 font-medium">{plan.pricePerWord}</span>
                         </div>
                       </div>
                       
@@ -471,11 +374,10 @@ print(result["bypassed_text"])`}</code>
                 
                 {/* Alipay - Coming Soon */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 opacity-60">
-                  <img 
-                    src="/lovable-uploads/f7695b0c-0ccd-4db6-b9e3-f393cfd978b8.png" 
-                    alt="Alipay Logo" 
-                    className="h-12 w-12 mx-auto mb-3 opacity-60"
-                  />
+                  <svg className="h-12 w-12 mx-auto mb-3" viewBox="0 0 24 24" fill="#9CA3AF">
+                    <path d="M21.422 13.253c.067-.067 0-.067 0-.067C19.43 10.197 16.107 8 12.45 8 7.126 8 2.675 12.186 2.675 17.33c0 2.59 1.342 4.92 3.467 6.642.067.067.134.067.201.067.067 0 .134-.067.134-.134l.738-2.388c0-.067 0-.134-.067-.201-.067-.067-.134-.067-.201-.067-.87.134-1.744.268-2.613.268-1.006 0-1.677-.335-1.677-1.274 0-.134 0-.268.067-.469C3.011 16.324 7.26 13.32 12.45 13.32c3.4 0 6.485 1.408 8.3 3.595.134.134.335.134.47.067.134-.67.201-.268.201-.402v-3.327Z" />
+                    <path d="M7.866 19.383c0 .469.335.804.805.804.469 0 .804-.335.804-.804a.804.804 0 0 0-.804-.804c-.47 0-.805.335-.805.804Z" />
+                  </svg>
                   <h4 className="text-lg font-bold text-gray-500 mb-2">支付宝</h4>
                   <p className="text-sm text-gray-500 mb-3">即将上线，敬请期待</p>
                   <div className="flex items-center justify-center">
@@ -562,11 +464,12 @@ const newPricingPlans = [
     period: "每月300词",
     wordCount: "300",
     description: "核心AI降重功能体验",
-      features: [
-        "每月300词 (次月1日重置)",
-        "基础AI降重功能体验（降AI率达80%）",
-        "解决基础降AI率需求",
-      ],
+    features: [
+      "每月300词 (次月1日重置)",
+      "核心AI降重功能体验",
+      "所有潜在用户",
+      "损失规避 (每月重置)、习惯养成",
+    ],
     cta: "免费开始",
     popular: false,
     icon: Shield,
@@ -582,12 +485,12 @@ const newPricingPlans = [
     period: "2,000词", 
     wordCount: "2,000",
     description: "永不过期，即买即用",
-      features: [
-        "2,000词处理量",
-        "永不过期，即买即用",
-        "单篇紧急论文降AI利器",
-        "解决燃眉之急",
-      ],
+    features: [
+      "2,000词处理量",
+      "永不过期，即买即用",
+      "单篇紧急论文需求者",
+      "解决燃眉之急、低决策门槛",
+    ],
     cta: "选择应急包",
     popular: true,
     icon: Zap,
@@ -603,11 +506,12 @@ const newPricingPlans = [
     period: "20,000词",
     wordCount: "20,000",
     description: "永不过期，量大优惠",
-      features: [
-        "20,000词处理量",
-        "永不过期，量大优惠",
-        "满足学期多篇课程论文降重需求",
-      ],
+    features: [
+      "20,000词处理量",
+      "永不过期，量大优惠",
+      "多篇作业、课程论文需求者",
+      "价值锚定、降低选择摩擦",
+    ],
     cta: "选择学期包",
     popular: false,
     icon: Crown,
@@ -623,12 +527,12 @@ const newPricingPlans = [
     period: "50,000词",
     wordCount: "50,000",
     description: "永不过期，最高性价比",
-      features: [
-        "50,000词处理量",
-        "永不过期，最高性价比",
-        "单词成本低至2分钱",
-        "快速解决毕业论文长篇报告需求",
-      ],
+    features: [
+      "50,000词处理量",
+      "永不过期，最高性价比",
+      "毕业设计、长篇报告需求者",
+      "高价锚点，凸显其他方案价值",
+    ],
     cta: "选择毕业论文包",
     popular: false,
     icon: Sparkles,
