@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Check, ArrowRight, Zap, CheckCircle, Terminal, Shield, Crown, Sparkles } from "lucide-react";
+import { Check, ArrowRight, Zap, CheckCircle, Terminal, Shield, Crown, Sparkles, Search } from "lucide-react";
 import { useState } from "react";
 import { UniversityLogoCarousel } from "@/components/UniversityLogoCarousel";
 import { Testimonials } from "@/components/testimonials/Testimonials";
@@ -103,6 +103,103 @@ export default function Index() {
                 <Zap className="mr-2 h-5 w-5" />
                 绕过AI检测
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* AI Detection Demo Section */}
+        <section className="py-20">
+          <div className="gptzero-card p-8 mb-20">
+            <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">AI检测率查询</h2>
+            <p className="text-center text-gray-600 mb-2 gptzero-subtitle mx-auto">
+              融合Turnitin、GPTZero、ZeroGPT三家算法
+            </p>
+            <p className="text-center text-gray-500 mb-8 text-sm">
+              精准检测文本AI生成概率，为内容审核提供可靠依据
+            </p>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  输入待检测文本
+                </label>
+                <textarea 
+                  className="gptzero-textarea w-full h-80 p-6 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gray-500 focus:border-gray-500 text-gray-700"
+                  placeholder="在此输入需要检测AI率的内容..."
+                  defaultValue=""
+                />
+              </div>
+              
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label className="block text-sm font-medium text-gray-700">
+                    AI检测结果
+                  </label>
+                  <div className="flex items-center space-x-4">
+                    <span className="text-xs text-gray-500">Turnitin: 45%</span>
+                    <span className="text-xs text-gray-500">GPTZero: 52%</span>
+                    <span className="text-xs text-gray-500">ZeroGPT: 38%</span>
+                  </div>
+                </div>
+                <div className="w-full h-80 p-6 rounded-lg border border-gray-200 bg-gray-50 flex flex-col items-center justify-center">
+                  <div className="relative w-32 h-32 mb-6">
+                    <div className="absolute inset-0 rounded-full border-8 border-gray-200"></div>
+                    <div className="absolute inset-0 rounded-full border-8 border-orange-500 transform -rotate-90" 
+                         style={{
+                           borderRightColor: 'transparent',
+                           borderBottomColor: 'transparent', 
+                           borderLeftColor: 'transparent',
+                           clipPath: 'polygon(50% 50%, 50% 0%, 85% 15%, 50% 50%)'
+                         }}>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-orange-500">45%</div>
+                        <div className="text-xs text-gray-500">综合AI率</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-medium text-gray-800 mb-2">AI生成概率中等</p>
+                    <p className="text-sm text-gray-600">融合三家算法的综合检测结果</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8 text-center">
+              <Button 
+                size="lg" 
+                className="rounded-lg px-12 py-3 text-base font-medium bg-gray-900 hover:bg-gray-800 text-white mr-4"
+              >
+                <Search className="mr-2 h-5 w-5" />
+                开始AI检测
+              </Button>
+              <Link to="/dashboard">
+                <Button 
+                  variant="outline"
+                  size="lg" 
+                  className="rounded-lg px-12 py-3 text-base font-medium border-gray-300 text-gray-700 hover:bg-gray-50"
+                >
+                  体验完整功能
+                </Button>
+              </Link>
+            </div>
+            
+            {/* Algorithm Badges */}
+            <div className="mt-8 flex justify-center space-x-6">
+              <div className="flex items-center bg-red-50 px-4 py-2 rounded-full">
+                <Shield className="h-4 w-4 text-red-500 mr-2" />
+                <span className="text-sm font-medium text-red-700">Turnitin</span>
+              </div>
+              <div className="flex items-center bg-blue-50 px-4 py-2 rounded-full">
+                <Shield className="h-4 w-4 text-blue-500 mr-2" />
+                <span className="text-sm font-medium text-blue-700">GPTZero</span>
+              </div>
+              <div className="flex items-center bg-green-50 px-4 py-2 rounded-full">
+                <Shield className="h-4 w-4 text-green-500 mr-2" />
+                <span className="text-sm font-medium text-green-700">ZeroGPT</span>
+              </div>
             </div>
           </div>
         </section>
